@@ -1,0 +1,11 @@
+.lottomixer {
+  max-height: 178px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  transform: scale(0.51);
+  margin-bottom: 8px;
+}
