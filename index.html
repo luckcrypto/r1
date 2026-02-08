@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="assets/css/elgordo-la-primitiva.compiled.css">
     <link rel="stylesheet" href="assets/css/eurojackpot.compiled.css">
     <link rel="stylesheet" href="assets/css/euromillions.compiled.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
     <link rel="stylesheet" href="assets/css/la-primitiva.compiled.css">
     <link rel="stylesheet" href="assets/css/megamillions.compiled.css">
     <link rel="stylesheet" href="assets/css/mixer.compiled.css">
@@ -300,7 +301,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
     <section id="random" class="hero" style ="background-color: rgb(36,34,64); padding-top: 60px; padding-bottom: 120px;">
         
-        <div class="lottomixer"><canvas id="TNL" width="400" height="400"></canvas></div>
+
+<div class="slider">
+   <div class="slide">
+         <div class="lottomixer"><canvas id="TNL" width="400" height="400"></canvas></div>
+   </div>
+   <div class="slide">
+         <div class="lottomixer"><canvas id="POWER1" width="400" height="400"></canvas></div>
+   </div>
+   <div class="slide">
+         <div class="lottomixer"><canvas id="POWER2" width="400" height="400"></canvas></div>
+   </div>
+</div>
+
+
+        
         <h1 style="padding-left: 4px; padding-right: 4px;">Random Number Generators 🎰✨</h1>
         
 <div class="container" style="margin: 0px;padding: 0px;">
@@ -538,17 +553,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script src="assets/js/elgordo-la-primitiva.js"></script>
     <script src="assets/js/eurojackpot.js"></script>
     <script src="assets/js/euromillions.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
     <script src="assets/js/la-primitiva.js"></script>
     <script src="assets/js/megamillions.js"></script>
     <script src="assets/js/mixer_national_lottery.js"></script>
+    <script src="assets/js/mixer_powerball_1.js"></script>
+    <script src="assets/js/mixer_powerball_2.js"></script>
     <script src="assets/js/oz-lotto.js"></script>
     <script src="assets/js/powerball.js"></script>
     <script src="assets/js/prices.js"></script>
     <script src="assets/js/random.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/seed_phrase_generator24.js"></script>
+    <script src="assets/js/slider.js"></script>
     <script src="assets/js/superenalotto.js"></script>
     <script src="assets/js/uk-lotto.js"></script>
 </body>
