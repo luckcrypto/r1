@@ -1,12 +1,10 @@
 // reusable-lottery-drum.js
-
 function startLotteryDrum(canvasId) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) {
         console.error(`Canvas with id "${canvasId}" not found`);
         return;
     }
-
     const ctx = canvas.getContext("2d");
     const width = canvas.width;
     const height = canvas.height;
@@ -14,10 +12,6 @@ function startLotteryDrum(canvasId) {
     const centerY = height / 2;
     const drumRadius = 180;
     const innerDrumRadius = drumRadius - 15;
-
-    // ────────────────────────────────────────────────
-    // Your exact physics settings
-    // ────────────────────────────────────────────────
     const gravity = 0.68;
     const blowerPower = 2.5;
     const blowerRadius = 58;
@@ -30,7 +24,7 @@ function startLotteryDrum(canvasId) {
         return Math.random() * (max - min) + min;
     }
 
-    // Ball color groups (your exact logic)
+    // Ball color groups
     function getBallColor(number) {
         if (number <= 10) return '#ffffff';
         if (number <= 20) return '#87CEEB';
@@ -50,7 +44,7 @@ function startLotteryDrum(canvasId) {
             this.baseColor = getBallColor(number);
         }
 
-        draw() {
+        draw() { /* unchanged - keeping your original ball drawing */ 
             const gradient = ctx.createRadialGradient(
                 this.x - this.size * 0.4,
                 this.y - this.size * 0.4,
@@ -62,21 +56,17 @@ function startLotteryDrum(canvasId) {
             gradient.addColorStop(0, this.baseColor);
             gradient.addColorStop(0.5, this.darkenColor(this.baseColor, 0.85));
             gradient.addColorStop(1, this.darkenColor(this.baseColor, 0.65));
-
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
             ctx.fillStyle = gradient;
             ctx.fill();
-
             ctx.strokeStyle = 'rgba(0,0,0,0.5)';
             ctx.lineWidth = 1.8;
             ctx.stroke();
-
             ctx.beginPath();
             ctx.arc(this.x - this.size * 0.35, this.y - this.size * 0.35, this.size * 0.22, 0, 2 * Math.PI);
             ctx.fillStyle = 'rgba(255,255,255,0.55)';
             ctx.fill();
-
             ctx.fillStyle = '#000000';
             ctx.font = 'bold 14px Arial';
             ctx.textAlign = 'center';
@@ -84,7 +74,7 @@ function startLotteryDrum(canvasId) {
             ctx.fillText(this.number, this.x, this.y);
         }
 
-        darkenColor(hex, factor) {
+        darkenColor(hex, factor) { /* unchanged */ 
             let r = parseInt(hex.slice(1,3), 16);
             let g = parseInt(hex.slice(3,5), 16);
             let b = parseInt(hex.slice(5,7), 16);
@@ -94,14 +84,12 @@ function startLotteryDrum(canvasId) {
             return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
         }
 
-        update() {
+        update() { /* unchanged */ 
             const ts = timeScale;
             this.velY += gravity * ts;
-
             const dx = this.x - centerX;
             const dy = this.y - centerY;
             const dist = Math.hypot(dx, dy);
-
             if (dist > innerDrumRadius * 0.4) {
                 const bottomDist = Math.hypot(dx, dy - innerDrumRadius + 35);
                 if (bottomDist < blowerRadius) {
@@ -110,50 +98,40 @@ function startLotteryDrum(canvasId) {
                     this.velX += random(-0.1, 0.9) * ts;
                 }
             }
-
             this.velX *= Math.pow(friction, ts);
             this.velY *= Math.pow(friction, ts);
-
             if (dist + this.size > innerDrumRadius) {
                 const angle = Math.atan2(dy, dx);
                 this.x = centerX + Math.cos(angle) * (innerDrumRadius - this.size);
                 this.y = centerY + Math.sin(angle) * (innerDrumRadius - this.size);
-
                 const nx = dx / dist;
                 const ny = dy / dist;
                 const dot = this.velX * nx + this.velY * ny;
-
                 this.velX -= 2 * dot * nx * wallBounce;
                 this.velY -= 2 * dot * ny * wallBounce;
             }
-
             this.x += this.velX * ts;
             this.y += this.velY * ts;
         }
 
-        collisionDetect(balls) {
+        collisionDetect(balls) { /* unchanged */ 
             for (const ball of balls) {
                 if (this === ball) continue;
                 const dx = this.x - ball.x;
                 const dy = this.y - ball.y;
                 const distance = Math.hypot(dx, dy);
-
                 if (distance < this.size + ball.size) {
                     const nx = dx / distance;
                     const ny = dy / distance;
-
                     const rvx = this.velX - ball.velX;
                     const rvy = this.velY - ball.velY;
                     const dot = rvx * nx + rvy * ny;
-
                     const ix = dot * nx;
                     const iy = dot * ny;
-
                     this.velX -= ix * 0.94;
                     this.velY -= iy * 0.94;
                     ball.velX += ix * 0.94;
                     ball.velY += iy * 0.94;
-
                     const overlap = this.size + ball.size - distance;
                     this.x += nx * overlap * 0.5;
                     this.y += ny * overlap * 0.5;
@@ -168,11 +146,9 @@ function startLotteryDrum(canvasId) {
     const balls = [];
     const bottomOffset = innerDrumRadius * 0.65;
     const spreadRadius = innerDrumRadius * 0.7;
-
     for (let i = 1; i <= 50; i++) {
         const size = 14;
         let x, y, dist;
-
         do {
             const angle = Math.PI + random(-Math.PI / 3, Math.PI / 3);
             const radius = random(0, spreadRadius);
@@ -180,7 +156,6 @@ function startLotteryDrum(canvasId) {
             y = centerY + radius * Math.sin(angle) + bottomOffset;
             dist = Math.hypot(x - centerX, y - centerY);
         } while (dist + size > innerDrumRadius || y < centerY - innerDrumRadius * 0.2);
-
         balls.push(new Ball(
             x, y,
             random(-2, 2),
@@ -190,13 +165,15 @@ function startLotteryDrum(canvasId) {
         ));
     }
 
-    let rotation = 0;
+    let rotationCW  = 0.025;   // clockwise
+    let rotationCCW = 0.058;   // counter-clockwise
 
     function drawDrum() {
         const cx = centerX;
         const cy = centerY;
         const r = drumRadius;
 
+        // ── Drum background, glass, rim, highlights
         const glassGradient = ctx.createRadialGradient(
             cx - r * 0.35, cy - r * 0.35, r * 0.1,
             cx, cy, r
@@ -205,7 +182,6 @@ function startLotteryDrum(canvasId) {
         glassGradient.addColorStop(0.4, 'rgba(220, 235, 255, 0.75)');
         glassGradient.addColorStop(0.7, 'rgba(200, 220, 245, 0.55)');
         glassGradient.addColorStop(1, 'rgba(180, 200, 230, 0.40)');
-
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = glassGradient;
@@ -219,7 +195,6 @@ function startLotteryDrum(canvasId) {
         insetGradient.addColorStop(0.5, 'rgba(0, 0, 60, 0.12)');
         insetGradient.addColorStop(0.8, 'rgba(0, 0, 80, 0.25)');
         insetGradient.addColorStop(1, 'rgba(0, 0, 100, 0.35)');
-
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fillStyle = insetGradient;
@@ -265,15 +240,29 @@ function startLotteryDrum(canvasId) {
 
         ctx.save();
         ctx.translate(cx, cy);
-        ctx.rotate(rotation);
-        ctx.strokeStyle = 'rgba(70, 80, 100, 0.55)';
-        ctx.lineWidth = 4.5;
-        for (let i = 0; i < 6; i++) {
+        ctx.rotate(rotationCW);
+        ctx.strokeStyle = 'rgba(38, 38, 48, 0.38)'
+        ctx.lineWidth = 5;
+        for (let i = 0; i < 3; i++) {
             ctx.beginPath();
             ctx.moveTo(0, 0);
             ctx.lineTo(r - 10, 0);
             ctx.stroke();
-            ctx.rotate(Math.PI / 3);
+            ctx.rotate(Math.PI * 2 / 3);
+        }
+        ctx.restore();
+
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(rotationCCW);
+        ctx.strokeStyle = 'rgba(38, 38, 58, 0.21)';
+        ctx.lineWidth = 8;
+        for (let i = 0; i < 3; i++) {
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(r - 10, 0);
+            ctx.stroke();
+            ctx.rotate(Math.PI * 2 / 3);
         }
         ctx.restore();
     }
@@ -288,15 +277,14 @@ function startLotteryDrum(canvasId) {
             ball.draw();
         }
 
-        rotation += 0.025 * timeScale;
+        const rotSpeed = 0.025 * timeScale;
+        rotationCW  += rotSpeed;
+        rotationCCW -= rotSpeed;
+
         requestAnimationFrame(animate);
     }
 
     animate();
 }
-
-// ────────────────────────────────────────────────
-// Call this function for every canvas you want to animate
-// ────────────────────────────────────────────────
 
 startLotteryDrum("TNL");
