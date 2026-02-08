@@ -3,6 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all var(--transition-normal);
+}
+
+.lottomixer:hover {
+  transform: translateY(2px) rotate(0deg);
+  filter: drop-shadow(0 4mm 20mm rgba(11, 11, 22, 0.8));
 }
 
 canvas {
