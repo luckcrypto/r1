@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="assets/css/elgordo-la-primitiva.compiled.css">
     <link rel="stylesheet" href="assets/css/eurojackpot.compiled.css">
     <link rel="stylesheet" href="assets/css/euromillions.compiled.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css">
     <link rel="stylesheet" href="assets/css/la-primitiva.compiled.css">
     <link rel="stylesheet" href="assets/css/megamillions.compiled.css">
     <link rel="stylesheet" href="assets/css/mixer.compiled.css">
@@ -81,17 +82,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="brand">
                 <div class="brandText">
                     <a href="index.html"><div class="brandName">‎ ‎</div></a>
-                    <div class="brandTag">Where preparations meet opportunities! 🤞🍀</div>
+                    <div class="brandTag">Where preparations meet opportunities! <span aria-hidden="true">🤞🍀</span></div>
                 </div>
             </div>
         </div>
 
         <div class="right">
-            <a class="chip primary" href="generators.html">
+            <a class="chip primary" href="generators.html" aria-label="Bitcoin and crypto tools">
                 <i class="fa fa-wrench"></i>
                 <span>Tools</span>
             </a>
-            <a class="chip primary" href="shop.html">
+            <a class="chip primary" href="shop.html" aria-label="Shop Luck.fyi Merchandise">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Lucky Shop</span>
             </a>
@@ -99,14 +100,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </header>
     
     <!-- Drawer + overlay -->
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
+    <div class="overlay" id="overlay"></div>
 
-    <aside class="drawer" id="drawer" aria-hidden="true">
+    <aside class="drawer" id="drawer">
         <div class="drawerHeader">
             <div class="drawerTitle">
                 <div>
-                    <div class="drawerName">‎ ‎ ‎ </div>
-                    <div class="drawerHint">Where preparations meet opportunities! 🤞🍀</div>
+                    <div class="drawerName">Luck.fyi</div>
+                    <div class="drawerHint">Where preparations meet opportunities! <span aria-hidden="true">🤞🍀</span></div>
                 </div>
             </div>
 
@@ -121,71 +122,62 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
 
         <nav class="nav">
-            <a class="navLink" href="index.html">
+
+        <a class="navLink" href="index.html" aria-label="Home">
                 <span class="navIco"><i class="fas fa-home"></i></span>
                 <div class="navText">
                     <div class="navTitle">Home</div>
                     <div class="navDesc">Homepage</div>
                 </div>
-                <div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d3">25</span></div>
             </a>
 
-            <a class="navLink" href="lotteries.html">
+            <a class="navLink" href="lotteries.html" aria-label="Lottery Odds and Information">
                 <span class="navIco"><i class="fa fa-play-circle"></i></span>
                 <div class="navText">
                     <div class="navTitle">Lotteries</div>
                     <div class="navDesc">Explore Lottery Odds</div>
                 </div>
-                <div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d1">10</span></div>
             </a>
 
-            <a class="navLink" href="generators.html">
+            <a class="navLink" href="generators.html" aria-label="Random Lottery Number Generators">
                 <span class="navIco"><i class="fa fa-cog"></i></span>
                 <div class="navText">
                     <div class="navTitle">Random Lottery Numbers</div>
                     <div class="navDesc">Random Lottery Number Generators</div>
                 </div>
-                <div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d8">8</span></div>
             </a>
 
-            <a class="navLink" href="#shop" data-jump="shop">
+            <a class="navLink" href="shop.html" aria-label="Shop Luck.fyi Merchandise">
                 <span class="navIco"><i class="fas fa-shopping-cart"></i></span>
                 <div class="navText">
                     <div class="navTitle">Shop</div>
-                    <div class="navDesc">Shop Luck Merchandise</div>
+                    <div class="navDesc">Shop Lucky Merchandise</div>
                 </div>
-                <div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d2">15</span></div>
             </a>
 
-            <a class="navLink" href="/about">
-                <span class="navIco"
-                    ><i class="fas fa-question-circle"></i
-                ></span>
+            <a class="navLink" href="about.html" aria-label="About our lottery and crypto tools">
+                <span class="navIco"><i class="fas fa-question-circle"></i></span>
                 <div class="navText">
                     <div class="navTitle">About</div>
                     <div class="navDesc">About Luck.fyi</div>
                 </div>
-                <div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d5">41</span></div>
             </a>
 
-            <a class="navLink" href="/crypto.html">
-                <span class="navIco"
-                    ><i class="fa fa-btc"></i
-                ></span>
+
+            <a class="navLink" href="crypto.html" aria-label="Bitcoin and crypto tools">
+                <span class="navIco"><i class="fa fa-btc"></i></span>
                 <div class="navText">
                     <div class="navTitle">Crypto</div>
                     <div class="navDesc">Crypto Prices and Crypto Luck</div>
                 </div>
-                <div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d6">57</span></div>
             </a>
 
-            <a class="navLink" href="#contact" data-jump="contact">
+            <a class="navLink" href="crypto.html" aria-label="Contact Luck.fyi">
                 <span class="navIco"><i class="fas fa-reply"></i></span>
                 <div class="navText">
                     <div class="navTitle">Contact</div>
                     <div class="navDesc">Get In Touch</div>
                 </div>
-                <div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d4">30</span></div>
             </a>
         </nav>
 
@@ -201,12 +193,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <main class="main">
        
         
-    <section id="random" class="hero" style ="background-color: rgb(36,34,64); padding-top: 60px; padding-bottom: 120px;">
-            
-        <h1 style="padding-left: 4px; padding-right: 4px;">Random Seed Phrase Generators<br></h1>
-        
+<section id="random" class="hero" style="background: linear-gradient(135deg, #2e344e 0%, #1c1f2b 50%, #241b2e 100%); padding-top: 80px; padding-bottom: 120px; text-align: center;">
+    
+    <h1 style="padding: 0 15px; font-size: 42px; font-weight: 800; margin-bottom: 40px;">
+        Secure Crypto Seed Phrase Generators <br>
+        <span style="font-size: 22px; font-weight: 400; opacity: 0.8;">BIP39 Compliant 12 & 24-Word Recovery Keys</span>
+    </h1>
+
+
 <div class="container" style="margin: 0px;padding: 0px;">
-    <div class="row" style="width: 100vw;margin: 0px;transform: scale(1);">
+    <div class="row" style="width: 100vw;margin-bottom: 100px;transform: scale(1);">
         <div class="col d-flex justify-content-center" style="padding: 0px; transform: scale(0.95);">
             <div class="generate" style="margin-left: 10px; margin-right: 10px;">
         
@@ -250,10 +246,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
         </div>
     </div>
-</div>    
-<div class="d-flex justify-content-center align-items-center" style="margin-top: 100px;">
+</div> 
+
+
+<div class="d-flex justify-content-center align-items-center" style="margin-top: 100px; margin-bottom: 80px;">
     <div class="d-flex justify-content-center align-items-center"><a href="/generators.html"><button class="btn" type="button" style="width: auto; padding: 28px;">🎱 See all of our random number generators 🎱</button></a></div>
 </div>
+
+    <div style="margin-bottom: 60px;">
+        <h2 style="font-size: 32px; line-height: 1.2; margin-bottom: 10px;">Standard 12-Word Seed Generator</h2>
+        <h3 style="font-size: 18px; opacity: 0.7; font-weight: 400; max-width: 700px; margin: 0 auto;">
+            Ideal for mobile wallets and standard software accounts.
+        </h3>
+        </div>
+
+
+
+    <div style="margin-bottom: 60px;">
+        <h2 style="font-size: 32px; line-height: 1.2; margin-bottom: 10px;">High-Security 24-Word Recovery Phrase</h2>
+        <h3 style="font-size: 18px; opacity: 0.7; font-weight: 400; max-width: 700px; margin: 0 auto;">
+            Enhanced entropy for hardware wallets and cold storage.
+        </h3>
+        </div>
+
+    <div style="margin-top: 80px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: inline-block;">
+        <h3 style="font-size: 16px; color: #50fa7b; margin-bottom: 5px;">Privacy & Security</h3>
+        <p style="font-size: 14px; opacity: 0.6; max-width: 500px; margin: 0 auto; line-height: 1.6;">
+            This tool runs locally in your browser. No data is ever transmitted to a server. <br>
+            Always generate phrases on a trusted device and never share your recovery keys.
+        </p>
+    </div>
+           
     </section>
     
      <!-- Main -->
@@ -305,40 +328,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </div>
                 </div>
 
-                <div class="heroArt" aria-hidden="true">
+                <div class="heroArt">
                     <div class="orb"></div>
                     <div class="glassCard">
-                        <div class="glassTop">
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d5">41</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="100" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d1">2</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="150" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d2">16</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="200" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d6">55</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="250" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d4">31</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="300" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d3">28</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="350" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d2">19</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="400" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d3">21</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="450" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d5">45</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="500" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d6">59</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="550" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d8">8</span></div></a>
-                            <a href="#"><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="600" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d2">13</span></div></a>
+                        <div class="glassTop" aria-hidden="true">
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="50" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d5">41</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="100" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d1">2</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="150" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d2">16</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="200" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d6">55</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="250" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d4">31</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="300" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d3">28</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="350" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d2">19</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="400" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d3">21</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="450" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d5">45</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="500" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d6">59</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="550" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d8">8</span></div></a>
+                            <a><div class="ball"><span data-aos="zoom-in-down" data-aos-duration="300" data-aos-delay="600" data-aos-once="true" class="d-flex align-items-center justify-content-center dot d2">13</span></div></a>
                         </div>
                         <div class="glassBody">
-                            <a href="powerball_generator.html"><a href="powerball_generator.html"><div class="line0 w80"><div data-aos="fade" data-aos-duration="600" data-aos-delay="700" data-aos-once="true" class="line typewriter"><p class="text-1">Powerball 🇺🇸</p></div></div></a>
-                            <a href="megamillions_generator.html"><div class="line0 w60"><div data-aos="fade" data-aos-duration="600" data-aos-delay="750" data-aos-once="true" class="line"><p class="text-1">Megamillions 🇺🇸</p></div></div></a>
-                            <a href="euromillions_generator.html"><div class="line0 w70"><div data-aos="fade" data-aos-duration="600" data-aos-delay="800" data-aos-once="true" class="line"><p class="text-1">Euromillions 🇪🇺</p></div></div></a>
-                            <a href="national_lottery_generator.html"><div class="line0 w90"><div data-aos="fade" data-aos-duration="600" data-aos-delay="850" data-aos-once="true" class="line"><p class="text-1">UK National Lottery 🇬🇧</p></div></div></a>
-                            <a href="superenalotto_generator.html"><div class="line0 w70"><div data-aos="fade" data-aos-duration="600" data-aos-delay="900" data-aos-once="true" class="line"><p class="text-1">SuperEnalotto 🇮🇹</p></div></div></a>
-                            <a href="eurojackpot_generator.html"><div class="line0 w80"><div data-aos="fade" data-aos-duration="600" data-aos-delay="950" data-aos-once="true" class="line"><p class="text-1">EuroJackpot 🇪🇺</p></div></div></a>
-                            <a href="la_primitiva_generator.html"><div class="line0 w70"><div data-aos="fade" data-aos-duration="600" data-aos-delay="1000" data-aos-once="true" class="line"><p class="text-1">La Primitiva 🇪🇸</p></div></div></a>
-                            <a href="oz_lotto_generator.html"><div class="line0 w60"><div data-aos="fade" data-aos-duration="600" data-aos-delay="1050" data-aos-once="true" class="line"><p class="text-1">Oz Lotto 🇦🇺</p></div></div></a>
-                            <a href=""><div class="line0 w90"><div data-aos="fade" data-aos-duration="600" data-aos-delay="1100" data-aos-once="true" class="line typewriter"><p class="text-1">El Gordo Spanish Christmas Lottery 🇪🇸‎ ‎ ... ‎ ‎ and many more!</p></div></div></a>
-                            <div class="chips">
-                                <div class="pill"><span data-aos="fade" data-aos-duration="300" data-aos-delay="1150" data-aos-once="true" class="chipTiny"></span></div>
-                                <div class="pill"><span data-aos="fade" data-aos-duration="300" data-aos-delay="1200" data-aos-once="true" class="chipTiny"></span></div>
-                                <div class="pill"><span data-aos="fade" data-aos-duration="300" data-aos-delay="1250" data-aos-once="true" class="chipTiny"></span></div>
-                                <div class="pill"><span data-aos="fade" data-aos-duration="300" data-aos-delay="1300" data-aos-once="true" class="chipTiny"></span></div>
-                                <div class="pill"><span data-aos="fade" data-aos-duration="300" data-aos-delay="1350" data-aos-once="true" class="chipTiny"></span></div>
-                            </div>
+                            <a href="powerball_generator.html" aria-label="Powerball number generator"><div class="line0 w60"><div data-aos="fade" data-aos-duration="600" data-aos-delay="700" data-aos-once="true" class="line"><p class="text-1">Powerball <span aria-hidden="true">🇺🇸</span></p></div></div></a>
+
+                            <a href="megamillions_generator.html" aria-label="Mega Millions number generator"><div class="line0 w60"><div data-aos="fade" data-aos-duration="600" data-aos-delay="750" data-aos-once="true" class="line"><p class="text-1">Mega Millions <span aria-hidden="true">🇺🇸</span></p></div></div></a>
+
+                            <a href="euromillions_generator.html" aria-label="EuroMillions number generator"><div class="line0 w60"><div data-aos="fade" data-aos-duration="600" data-aos-delay="800" data-aos-once="true" class="line"><p class="text-1">EuroMillions <span aria-hidden="true">🇪🇺</span></p></div></div></a>
+
+                            <a href="national_lottery_generator.html" aria-label="National Lottery number generator"><div class="line0 w60"><div data-aos="fade" data-aos-duration="600" data-aos-delay="850" data-aos-once="true" class="line"><p class="text-1">National Lottery <span aria-hidden="true">🇬🇧</span></p></div></div></a>
+
+                            <a href="superenalotto_generator.html" aria-label="SuperEnalotto number generator"><div class="line0 w60"><div data-aos="fade" data-aos-duration="600" data-aos-delay="900" data-aos-once="true" class="line"><p class="text-1">SuperEnalotto <span aria-hidden="true">🇮🇹</span></p></div></div></a>
+
+                            <a href="eurojackpot_generator.html" aria-label="EuroJackpot number generator"><div class="line0 w80"><div data-aos="fade" data-aos-duration="600" data-aos-delay="950" data-aos-once="true" class="line"><p class="text-1">EuroJackpot <span aria-hidden="true">🇪🇺</span></p></div></div></a>
+
+                            <a href="la_primitiva_generator.html" aria-label="La Primitiva number generator"><div class="line0 w70"><div data-aos="fade" data-aos-duration="600" data-aos-delay="1000" data-aos-once="true" class="line"><p class="text-1">La Primitiva <span aria-hidden="true">🇪🇸</span></p></div></div></a>
+
+                            <a href="oz_lotto_generator.html" aria-label="Oz Lotto number generator"><div class="line0 w60"><div data-aos="fade" data-aos-duration="600" data-aos-delay="1050" data-aos-once="true" class="line"><p class="text-1">Oz Lotto <span aria-hidden="true">🇦🇺</span></p></div></div></a>
+
+                            <a href="el_gordo_generator.html" aria-label="El Gordo number generator"><div class="line0 w90"><div data-aos="fade" data-aos-duration="600" data-aos-delay="1100" data-aos-once="true" class="line"><p class="text-1">El Gordo Spanish Christmas Lottery<span aria-hidden="true">🇪🇸</span></p></div></div></a>
                         </div>
                     </div>
                 </div>
@@ -355,9 +379,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 >
             </div>
             <div class="footerLinks">
-                <a href="#overview" >Home</a>
-                <a href="/shop.html">Shop</a>
-                <a href="/crypto.html" data-jump="crypto">Crypto</a>
+                <a href="#overview">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="crypto.html">Crypto</a>
                 <a href="#contact" data-jump="contact">Contact</a>
             </div>
         </footer>
@@ -373,17 +397,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <script src="assets/js/elgordo-la-primitiva.js"></script>
     <script src="assets/js/eurojackpot.js"></script>
     <script src="assets/js/euromillions.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
     <script src="assets/js/la-primitiva.js"></script>
     <script src="assets/js/megamillions.js"></script>
     <script src="assets/js/mixer_national_lottery.js"></script>
+    <script src="assets/js/mixer_powerball_1.js"></script>
+    <script src="assets/js/mixer_powerball_2.js"></script>
     <script src="assets/js/oz-lotto.js"></script>
     <script src="assets/js/powerball.js"></script>
     <script src="assets/js/prices.js"></script>
     <script src="assets/js/random.js"></script>
     <script src="assets/js/script.js"></script>
     <script src="assets/js/seed_phrase_generator24.js"></script>
+    <script src="assets/js/slider.js"></script>
     <script src="assets/js/superenalotto.js"></script>
     <script src="assets/js/uk-lotto.js"></script>
 </body>
