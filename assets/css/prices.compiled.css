@@ -68,3 +68,13 @@ td:nth-of-type(2) {
   color: #ff0000;
   font-weight: 600;
 }
+
+@media (max-width: 768px) {
+  td.mcap {
+    display: none;
+    font-size: 12px;
+    min-width: 100px;
+    padding: 5px 5px;
+    color: #ffa800;
+  }
+}
