@@ -559,7 +559,6 @@ code {
 /* Main Content */
 .main {
   position: relative;
-  padding-bottom: 40px;
 }
 
 .hero {
@@ -686,7 +685,7 @@ code {
   margin-left: 4px;
   margin-right: 4px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, transparent 50%);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   font-weight: 700;
