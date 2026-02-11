@@ -61,7 +61,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 </head>
 
-<body><nav class="mobile-nav1 scroll-hide-element">
+<body style="background: transparent;"><nav class="mobile-nav1 scroll-hide-element">
     <a href="index.html" class="nav-link1 tooltip-trigger" 
        aria-label="Home" 
        data-tooltip="Homepage"><span aria-hidden="true" style="filter: brightness(110%) saturate(110%);">🏠</span></a>
@@ -110,7 +110,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         window.addEventListener('resize', updateVisibility);
         window.addEventListener('DOMContentLoaded', updateVisibility);
     </script>
-    <div data-aos="fade" data-aos-duration="1200" data-aos-once="true"><div class="app" id="app">
+    <div data-aos="fade" data-aos-duration="1200" data-aos-once="true">
+    <main class="main">
+        <div class="app" id="app">
     <!-- Top Bar -->
     <header class="topbar">
         <div class="left">
@@ -241,7 +243,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <main class="main">
        
         
-        <section class="hero" style ="background-color: #10101579; padding-top: 80px; padding-bottom: 80px;">
+        <section class="hero" style ="padding-top: 80px; padding-bottom: 80px;">
             <main style="border-radius: 15px; margin-top: 15px;">
 
 
@@ -250,61 +252,150 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h2 style="padding-left: 4px; padding-right: 4px;">Crypto Price Tracking including Bitcoin, Ethereum, XRP, and More!</h2>
 
 <div class="d-flex justify-content-center align-items-center" style="border-radius: 15px; margin-top: 80px;">
-  <table>
-    <thead>
-      <tr>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td ><a  id="btcLogo"></a></td>
-          <td><p class="d-flex justify-content-start align-items-start"><a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Bitcoin</a></p><strong style="color: orange;"  id="btcSymbol"><div class='loader'></div></strong></td>
-        <td>$<span id="btcPrice"><div class='loader'></div></span></td>
-        <td><span id="btcChange"><div class='loader'></div></span></td>
-            <td class="mcap"><span id="btcCap"><div class='loader'></div></span></td>
-          </tr>
-        <tr>
-        <td ><a  id="ethLogo"></a></td>
-          <td><p class="d-flex justify-content-start align-items-start"><a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Ethereum</a></p><strong style="color: orange;"  id="ethSymbol"><div class='loader'></div></strong></td>
-        <td>$<span id="ethPrice"><div class='loader'></div></span></td>
-        <td><span id="ethChange"><div class='loader'></div></span></td>
-            <td class="mcap"><span id="ethCap"><div class='loader'></div></span></td>
-          </tr>
-        <tr>
-        <td ><a  id="usdtLogo"></a></td>
-          <td><p class="d-flex justify-content-start align-items-start"><a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Tether</a></p><strong style="color: orange;"  id="usdtSymbol"><div class='loader'></div></strong></td>
-        <td>$<span id="usdtPrice"><div class='loader'></div></span></td>
-        <td><span id="usdtChange"><div class='loader'></div></span></td>
-            <td class="mcap"><span id="usdtCap"><div class='loader'></div></span></td>
-          </tr>
-        <tr>
-        <td ><a  id="xrpLogo"></a></td>
-          <td><p class="d-flex justify-content-start align-items-start"><a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Tether</a></p><strong style="color: orange;"  id="xrpSymbol"><div class='loader'></div></strong></td>
-        <td>$<span id="xrpPrice"><div class='loader'></div></span></td>
-        <td><span id="xrpChange"><div class='loader'></div></span></td>
-            <td class="mcap"><span id="xrpCap"><div class='loader'></div></span></td>
-          </tr>
-        <tr>
-        <td ><a  id="bnbLogo"></a></td>
-          <td><p class="d-flex justify-content-start align-items-start"><a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Tether</a></p><strong style="color: orange;"  id="bnbSymbol"><div class='loader'></div></strong></td>
-        <td>$<span id="bnbPrice"><div class='loader'></div></span></td>
-        <td><span id="bnbChange"><div class='loader'></div></span></td>
-            <td class="mcap"><span id="bnbCap"><div class='loader'></div></span></td>
-          </tr>
-        <tr>
-        <td ><a  id="solLogo"></a></td>
-          <td><p class="d-flex justify-content-start align-items-start"><a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Tether</a></p><strong style="color: orange;"  id="solSymbol"><div class='loader'></div></strong></td>
-        <td>$<span id="solPrice"><div class='loader'></div></span></td>
-        <td><span id="solChange"><div class='loader'></div></span></td>
-            <td class="mcap"><span id="solCap"><div class='loader'></div></span></td>
-          </tr>
-    </tbody>
-  </table>
+    <table>
+      <tbody>
+        <!-- Bitcoin -->
+        <tr class="toptable" data-bs-toggle="collapse" data-bs-target="#btcDropdown" aria-expanded="false" aria-controls="btcDropdown">
+          <td><a id="btcLogo"></a></td>
+          <td class="coin-name">
+            <p class="d-flex justify-content-start align-items-start mb-0">
+              <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Bitcoin</a>
+            </p>
+            <strong class="symbol" id="btcSymbol"><div class='loader'></div></strong>
+          </td>
+          <td class="price">$<span id="btcPrice"><div class='loader'></div></span></td>
+          <td id="btcChange"><div class='loader'></div></td>
+          <td class="mcap"><span id="btcCap"><div class='loader'></div></span></td>
+        </tr>
+        <tr id="btcDropdown" class="collapse">
+          <td colspan="5">
+            <div class="dropdown-content">
+              <h5>Bitcoin (BTC)</h5>
+              <small>Category: Store of Value / Digital Gold</small>
+              <p style="min-width: 100%; text-align: center;">Bitcoin is the original decentralized cryptocurrency, launched in 2009. It functions as digital money on a peer-to-peer blockchain network with a fixed supply of 21 million coins, serving as a hedge against inflation and enabling secure, borderless transfers without intermediaries.</p>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Ethereum -->
+        <tr data-bs-toggle="collapse" data-bs-target="#ethDropdown" aria-expanded="false" aria-controls="ethDropdown">
+          <td><a id="ethLogo"></a></td>
+          <td class="coin-name">
+            <p class="d-flex justify-content-start align-items-start mb-0">
+              <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Ethereum</a>
+            </p>
+            <strong class="symbol" id="ethSymbol"><div class='loader'></div></strong>
+          </td>
+          <td class="price">$<span id="ethPrice"><div class='loader'></div></span></td>
+          <td id="ethChange"><div class='loader'></div></td>
+          <td class="mcap"><span id="ethCap"><div class='loader'></div></span></td>
+        </tr>
+        <tr id="ethDropdown" class="collapse">
+          <td colspan="5">
+            <div class="dropdown-content">
+              <h5>Ethereum (ETH)</h5>
+              <small>Category: Smart Contract Platform / Layer-1 Blockchain</small>
+              <p style="min-width: 100%; text-align: center;">Ethereum is a programmable blockchain platform powering smart contracts, decentralized applications (dApps), DeFi, and NFTs. Ether (ETH) fuels network transactions and computation, making it the backbone of Web3 innovation since its 2015 launch.</p>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Tether (USDT) -->
+        <tr data-bs-toggle="collapse" data-bs-target="#usdtDropdown" aria-expanded="false" aria-controls="usdtDropdown">
+          <td><a id="usdtLogo"></a></td>
+          <td class="coin-name">
+            <p class="d-flex justify-content-start align-items-start mb-0">
+              <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Tether</a>
+            </p>
+            <strong class="symbol" id="usdtSymbol"><div class='loader'></div></strong>
+          </td>
+          <td class="price">$<span id="usdtPrice"><div class='loader'></div></span></td>
+          <td id="usdtChange"><div class='loader'></div></td>
+          <td class="mcap"><span id="usdtCap"><div class='loader'></div></span></td>
+        </tr>
+        <tr id="usdtDropdown" class="collapse">
+          <td colspan="5">
+            <div class="dropdown-content">
+              <h5>Tether (USDT)</h5>
+              <small>Category: Stablecoin / Fiat-Backed</small>
+              <p style="min-width: 100%; text-align: center;">Tether is the leading dollar-pegged stablecoin, providing price stability in crypto markets. It facilitates trading, remittances, and hedging with 1:1 USD backing and multi-chain availability since 2014.</p>
+            </div>
+          </td>
+        </tr>
+        <!-- XRP -->
+<tr data-bs-toggle="collapse" data-bs-target="#xrpDropdown" aria-expanded="false" aria-controls="xrpDropdown">
+  <td><a id="xrpLogo"></a></td>
+  <td class="coin-name">
+    <p class="d-flex justify-content-start align-items-start mb-0">
+      <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">XRP</a>
+    </p>
+    <strong class="symbol" id="xrpSymbol"><div class='loader'></div></strong>
+  </td>
+  <td class="price">$<span id="xrpPrice"><div class='loader'></div></span></td>
+  <td id="xrpChange"><div class='loader'></div></td>
+  <td class="mcap"><span id="xrpCap"><div class='loader'></div></span></td>
+</tr>
+<tr id="xrpDropdown" class="collapse">
+  <td colspan="5">
+    <div class="dropdown-content">
+      <h5>XRP</h5>
+      <small>Category: Cross-Border Payments / Bridge Currency</small>
+      <p style="min-width: 100%; text-align: center;">XRP is the native token of the XRP Ledger, designed for fast and low-cost international payments and settlements. Created by Ripple Labs, it enables near-instant transactions (3–5 seconds) with minimal fees, serving as a bridge asset between different currencies in financial systems.</p>
+    </div>
+  </td>
+</tr>
+<!-- BNB -->
+<tr data-bs-toggle="collapse" data-bs-target="#bnbDropdown" aria-expanded="false" aria-controls="bnbDropdown">
+  <td><a id="bnbLogo"></a></td>
+  <td class="coin-name">
+    <p class="d-flex justify-content-start align-items-start mb-0">
+      <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">BNB</a>
+    </p>
+    <strong class="symbol" id="bnbSymbol"><div class='loader'></div></strong>
+  </td>
+  <td class="price">$<span id="bnbPrice"><div class='loader'></div></span></td>
+  <td id="bnbChange"><div class='loader'></div></td>
+  <td class="mcap"><span id="bnbCap"><div class='loader'></div></span></td>
+</tr>
+<tr id="bnbDropdown" class="collapse">
+  <td colspan="5">
+    <div class="dropdown-content">
+      <h5>BNB (Binance Coin)</h5>
+      <small>Category: Exchange Utility Token / BNB Chain Native Coin</small>
+      <p style="min-width: 100%; text-align: center;">BNB is the native cryptocurrency of Binance and the BNB Chain ecosystem. Originally launched to offer trading fee discounts on the Binance exchange, it now powers gas fees, staking, governance, and decentralized applications on BNB Chain, one of the largest smart contract platforms by activity.</p>
+    </div>
+  </td>
+</tr>
+        <tr data-bs-toggle="collapse" data-bs-target="#solDropdown" aria-expanded="false" aria-controls="solDropdown">
+          <td><a id="solLogo"></a></td>
+          <td class="coin-name">
+            <p class="d-flex justify-content-start align-items-start mb-0">
+              <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Solana</a>
+            </p>
+            <strong class="symbol" id="solSymbol"><div class='loader'></div></strong>
+          </td>
+          <td class="price">$<span id="solPrice"><div class='loader'></div></span></td>
+          <td id="solChange"><div class='loader'></div></td>
+          <td class="mcap"><span id="solCap"><div class='loader'></div></span></td>
+        </tr>
+        <tr id="solDropdown" class="collapse">
+          <td colspan="5">
+            <div class="dropdown-content">
+              <h5>Solana (SOL)</h5>
+              <small>Category: High-Performance Layer-1 Blockchain</small>
+              <p style="min-width: 100%; text-align: center;">Solana is a fast, scalable layer-1 blockchain known for high throughput and very low fees. Its native token SOL is used for transaction fees, staking, and governance, powering dApps, DeFi, NFTs, and gaming.</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 </div>
+                
+              
 
 <div style="margin-top: 80px;">
 
-<p class="info">We provide real-time tracking of the top 10 cryptocurrencies by market cap, showing you current price, 24h change, and market cap—clear, fast, and accurate. Perfect for keeping tabs on Bitcoin, Ethereum, and the rest without the clutter. Data pulled from reliable feeds, updated constantly.</p>
+<p class="info">We provide real-time tracking of the top cryptocurrencies by market cap, showing you current price, 24h change, and market cap—clear, fast, and accurate. Perfect for keeping tabs on Bitcoin, Ethereum, and the rest without the clutter. Data pulled from reliable feeds, updated constantly.</p>
 
 <div class="d-flex justify-content-center align-items-center" style="margin-top: 100px;">
     <a href="seed-phrase-generator.html" 
@@ -316,11 +407,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </a>
 </div>
 </div>
-
-    </section>
-    
-     <!-- Main -->
-    <main class="main">
+                
+                  </section>
+                
         <section style="padding-top: 160px; padding-left: 10px; padding-right: 10px; padding-bottom: 120px;" class="herofront" id="overview" data-section="overview">
             <div class="heroGrid">
                 <div class="heroCopy" style="margin-top: 100px; margin-bottom: -80px">
@@ -426,7 +515,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
         </footer>
     </main>
-</div>
 </div>
     <div data-aos="zoom-in" data-aos-once="true" style="height: 1px;"></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
