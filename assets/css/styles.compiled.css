@@ -13,7 +13,7 @@
   --danger: #ef4444;
   --shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
   --shadow-sm: 0 10px 30px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 35px 90px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 4px 58px rgba(11, 11, 18, 0.68);
   --r: 18px;
   --topH: 76px;
   /* Transitions */
@@ -363,29 +363,25 @@ code {
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent1) rgba(255, 255, 255, 0.1);
+  scrollbar-color: var(--accent1) rgba(255, 255, 255, 0);
   display: flex;
   flex-direction: column;
   gap: 10px;
   flex: 1;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent1) rgba(255, 255, 255, 0.1);
+  scrollbar-color: var(--accent1) rgba(255, 255, 255, 0);
 }
 
 .nav::-webkit-scrollbar {
-  width: 6px;
+  width: 0px;
 }
 
 .nav::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0);
 }
 
 .nav::-webkit-scrollbar-thumb {
-  background: var(--accent1);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0);
 }
 
 .navLink {
@@ -685,7 +681,7 @@ code {
   margin-left: 4px;
   margin-right: 4px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, transparent 50%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   font-weight: 700;
@@ -802,6 +798,55 @@ code {
   font-size: 16px;
 }
 
+.mobile-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px) saturate(180%);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3), inset 0 4px 20px rgba(255, 255, 255, 0.15);
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.mobile-nav:hover {
+  display: none;
+  transform: translateY(-2px); /* Subtle lift on hover */
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.4), inset 0 6px 25px rgba(255, 255, 255, 0.2);
+}
+
+.nav-link {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 12px;
+  gap: 4px;
+  padding: 8px;
+  border-radius: 10px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.nav-link:hover {
+  display: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px) saturate(180%);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3), inset 0 4px 20px rgba(255, 255, 255, 0.15);
+}
+
+.nav-icon {
+  display: none;
+  font-size: 20px;
+}
+
 .heroArt {
   position: relative;
   margin-top: -70px;
@@ -832,7 +877,7 @@ code {
 }
 .glassCard {
   position: absolute;
-  width: 360px;
+  width: 408px;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(55, 57, 68, 0.3);
@@ -1383,7 +1428,6 @@ details p {
   padding-top: 16px;
 }
 
-/* Contact Card */
 .contactCard {
   margin-top: 40px;
   border-radius: 22px;
@@ -1421,7 +1465,6 @@ details p {
   font-size: 18px;
 }
 
-/* Footer */
 .footer {
   padding: 40px 20px;
   color: rgba(255, 255, 255, 0.7);
@@ -1511,8 +1554,7 @@ details p {
     min-height: 0;
     overflow-y: scroll;
     overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent1) rgba(255, 255, 255, 0.1);
+    scrollbar-color: var(--accent1) rgba(255, 255, 255, 0);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1525,8 +1567,7 @@ details p {
     min-height: 0;
     overflow-y: scroll;
     overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent1) rgba(255, 255, 255, 0.1);
+    scrollbar-color: var(--accent1) rgba(255, 255, 255, 0);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1557,13 +1598,113 @@ details p {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
   }
-  .heroArt {
+  .scroll-hide-element {
+    display: none !important;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    z-index: 9999 !important;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  /* The Tooltip Box */
+  /* Small Triangle Arrow */
+  /* Show Tooltip on Hover/Tap */
+}
+@media (max-width: 768px) and (max-width: 768px) {
+  .scroll-hide-element.visible {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+@media (max-width: 768px) {
+  .tooltip-trigger {
     position: relative;
-    margin-top: -180px;
-    margin-bottom: 70px;
-    min-height: 360px;
-    display: grid;
-    place-items: center;
+  }
+  .tooltip-trigger::after {
+    content: attr(data-tooltip); /* Pulls text from the HTML attribute */
+    position: absolute;
+    bottom: 50px; /* Positioned above the icon */
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(30, 31, 40, 0.9);
+    color: white;
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  .tooltip-trigger::before {
+    content: "";
+    position: absolute;
+    bottom: 62px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    border-width: 4px;
+    border-style: solid;
+    border-color: rgba(30, 31, 40, 0.9) transparent transparent transparent;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  .tooltip-trigger:hover::after,
+  .tooltip-trigger:active::after,
+  .tooltip-trigger:hover::before,
+  .tooltip-trigger:active::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  .mobile-nav1 {
+    width: 90%;
+    max-width: 400px;
+    height: 72px;
+    bottom: 18px;
+    border-radius: 888px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.15) 0%, transparent 68%);
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: var(--shadow-lg);
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-link1 {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 25px;
+    border-radius: 50%;
+    margin: 0 15px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 68%);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1.48px solid rgba(255, 255, 255, 0.28);
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer !important;
+  }
+  .mobile-nav1.visible .nav-link1:hover,
+  .mobile-nav1.visible .nav-link1:active {
+    transform: scale(1.18) translateY(0px);
+    border-color: color-mix(in srgb, var(--accent2) 65%, rgba(255, 255, 255, 0.16));
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent1) 35%, rgba(11, 11, 15, 0.5)), color-mix(in srgb, var(--accent2) 25%, rgba(255, 255, 255, 0.08))) !important;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5), 0 25px 70px var(--accentGlow);
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.2s ease;
   }
   .herofront {
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1) 38%, rgba(21, 8, 38, 0.15) 50%, rgba(21, 8, 38, 0.5) 55%, rgb(88, 38, 108)), url("../../assets/img/bg-mob.png") top/cover no-repeat;
@@ -1578,6 +1719,20 @@ details p {
     min-height: 360px;
     display: grid;
     place-items: center;
+  }
+  .glassCard {
+    position: absolute;
+    width: 84vw;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(55, 57, 68, 0.3);
+    backdrop-filter: blur(21px);
+    -webkit-backdrop-filter: blur(21px);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    transform: translateY(40px) rotate(3deg);
+    animation: cardFloat 8s ease-in-out infinite 1s;
+    transition: all var(--transition-normal);
   }
   .brandTag {
     display: none;
@@ -1607,8 +1762,7 @@ details p {
     min-height: 0;
     overflow-y: scroll;
     overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent1) rgba(255, 255, 255, 0.1);
+    scrollbar-color: var(--accent1) rgba(255, 255, 255, 0);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1621,8 +1775,7 @@ details p {
     min-height: 0;
     overflow-y: scroll;
     overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent1) rgba(255, 255, 255, 0.1);
+    scrollbar-color: var(--accent1) rgba(255, 255, 255, 0);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1647,7 +1800,7 @@ details p {
     gap: 20px;
   }
   .footer {
-    padding: 30px 16px;
+    padding-bottom: 128px;
   }
 }
 @media (max-width: 480px) {
