@@ -1918,6 +1918,16 @@ p.text-1 {
   animation-delay: 2s;
 }
 
+.text-1 {
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typingAnimation 5s steps(80, end) infinite;
+  animation-delay: 1s;
+}
+
 @keyframes typingAnimation {
   0% {
     width: 0;
@@ -1931,7 +1941,7 @@ p.text-1 {
 }
 @keyframes blinkAnimation {
   from, to {
-    border-color: transparent;
+    border-color: white;
   }
   50% {
     border-color: lightblue;

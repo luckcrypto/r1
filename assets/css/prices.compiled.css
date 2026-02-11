@@ -19,21 +19,34 @@ img {
 }
 
 table {
-  background: rgb(11, 11, 19);
-  min-width: 70%;
+  min-width: 92vw;
   max-width: 100vw;
   font-size: 12px;
   color: #000;
   text-align: center;
-  border-collapse: collapse;
-  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(55, 57, 68, 0.3);
+  backdrop-filter: blur(21px);
+  -webkit-backdrop-filter: blur(21px);
+  box-shadow: var(--shadow-lg);
   box-sizing: border-box;
   cursor: default;
+  transition: all 0.3s ease-in-out;
 }
 
 tr {
-  font-size: 12px;
-  border-bottom: 0px solid #000;
+  font-size: 15px;
+  padding: 10px;
+}
+
+tr.toptable {
+  font-size: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+tr.toptable:hover {
+  background: rgba(11, 11, 18, 0.28);
+  transition: all 0.3s ease-in-out;
 }
 
 th {
@@ -57,6 +70,29 @@ td:nth-of-type(2) {
   font-size: 12px;
 }
 
+.dropdown-content {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 11, 18, 0.28);
+  padding: 28px;
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.collapse.show .dropdown-content {
+  opacity: 1;
+  animation: fade 0.4s ease-in-out;
+}
+
 .positive {
   ffont-size: 12px;
   color: #6abe2a;
@@ -76,5 +112,39 @@ td:nth-of-type(2) {
     min-width: 100px;
     padding: 5px 5px;
     color: #ffa800;
+  }
+  table {
+    max-width: 92vw;
+    transition: all 0.3s ease-in-out;
+  }
+  tr {
+    max-width: 92vw;
+    transition: all 0.3s ease-in-out;
+  }
+  tr.toptable {
+    max-width: 92vw;
+    transition: all 0.3s ease-in-out;
+  }
+  tr.toptable:hover {
+    max-width: 92vw;
+    transition: all 0.3s ease-in-out;
+  }
+  th {
+    max-width: 92vw;
+    transition: all 0.3s ease-in-out;
+  }
+  th,
+  td {
+    max-width: 92vw;
+    transition: all 0.3s ease-in-out;
+  }
+  th:nth-of-type(2),
+  td:nth-of-type(2) {
+    max-width: 92vw;
+    transition: all 0.3s ease-in-out;
+  }
+  .dropdown-content {
+    max-width: 92vw;
+    transition: all 0.3s ease-in-out;
   }
 }
