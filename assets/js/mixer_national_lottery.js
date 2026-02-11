@@ -1,4 +1,4 @@
-// reusable-lottery-drum.js
+// UK Lotto Machine
 function startLotteryDrum(canvasId) {
     const canvas = document.getElementById(canvasId);
     if (!canvas) {
