@@ -1,10 +1,15 @@
+.slider {
+  margin-top: -58px;
+}
+
 .slide {
   width: 100%;
-  margin: 15px;
 }
 
 .lottomixer {
-  max-height: 178px;
+  height: auto;
+  max-height: 340px;
+  margin-bottom: -40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,6 +17,5 @@
 }
 
 canvas {
-  transform: scale(0.51);
-  margin-bottom: 8px;
+  transform: scale(0.7);
 }
