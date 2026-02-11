@@ -1610,8 +1610,6 @@ details p {
     z-index: 9999 !important;
     transition: opacity 0.4s ease, transform 0.4s ease;
   }
-  /* The Tooltip Box */
-  /* Small Triangle Arrow */
   /* Show Tooltip on Hover/Tap */
 }
 @media (max-width: 768px) and (max-width: 768px) {
@@ -1627,9 +1625,9 @@ details p {
     position: relative;
   }
   .tooltip-trigger::after {
-    content: attr(data-tooltip); /* Pulls text from the HTML attribute */
+    content: attr(data-tooltip);
     position: absolute;
-    bottom: 50px; /* Positioned above the icon */
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%) translateY(10px);
     background: rgba(30, 31, 40, 0.9);
@@ -1667,7 +1665,7 @@ details p {
   .mobile-nav1 {
     width: 94%;
     max-width: 680px;
-    height: 72px;
+    height: 82px;
     bottom: 12px;
     border-radius: 888px;
     border: 1px solid rgba(255, 255, 255, 0.16);
@@ -1680,12 +1678,13 @@ details p {
   }
   .nav-link1 {
     display: flex;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-size: 25px;
+    font-size: 28px;
+    text-shadow: 1px 2px 8px rgba(11, 11, 18, 0.78);
     border-radius: 50%;
     margin: 0 15px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 68%);
