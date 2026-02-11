@@ -44,7 +44,7 @@ tr.toptable {
   transition: all 0.3s ease-in-out;
 }
 
-tr.toptable:hover {
+tr.toptable:hover, tr.toptable:active {
   background: rgba(11, 11, 18, 0.28);
   transition: all 0.3s ease-in-out;
 }
@@ -125,7 +125,7 @@ td:nth-of-type(2) {
     max-width: 92vw;
     transition: all 0.3s ease-in-out;
   }
-  tr.toptable:hover {
+  tr.toptable:hover, tr.toptable:active {
     max-width: 92vw;
     transition: all 0.3s ease-in-out;
   }

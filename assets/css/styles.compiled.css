@@ -218,6 +218,10 @@ code {
     transform: scale(1.1);
   }
 }
+.lucky {
+  display: none !important;
+}
+
 .brandName {
   color: white;
   font-weight: 800;
@@ -1621,13 +1625,17 @@ details p {
   }
 }
 @media (max-width: 768px) {
+  .lucky {
+    display: flex !important;
+    max-width: 92vw;
+  }
   .tooltip-trigger {
     position: relative;
   }
   .tooltip-trigger::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: 60px;
+    bottom: 62px;
     left: 50%;
     transform: translateX(-50%) translateY(10px);
     background: rgba(30, 31, 40, 0.9);
@@ -1665,7 +1673,7 @@ details p {
   .mobile-nav1 {
     width: 94%;
     max-width: 680px;
-    height: 82px;
+    height: 91px;
     bottom: 12px;
     border-radius: 888px;
     border: 1px solid rgba(255, 255, 255, 0.16);
@@ -1678,20 +1686,24 @@ details p {
   }
   .nav-link1 {
     display: flex;
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 61px;
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-size: 28px;
     text-shadow: 1px 2px 8px rgba(11, 11, 18, 0.78);
-    border-radius: 50%;
+    border-radius: 33%;
     margin: 0 10px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 68%);
+    flex-direction: column;
+    text-decoration: none;
+    font-size: 11px;
+    gap: 4px;
     box-shadow: var(--shadow-lg);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1.48px solid rgba(255, 255, 255, 0.28);
+    line-height: 1;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
     cursor: pointer !important;
