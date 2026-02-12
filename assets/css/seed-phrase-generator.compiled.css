@@ -143,14 +143,7 @@ button {
   font-family: monospace;
   font-size: 15px;
   line-height: 1.6;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto;
-}
-
-.ticket-line {
-  text-align: left;
+  text-align: justify;
   letter-spacing: 0.4px;
 }
 
@@ -166,14 +159,6 @@ button {
   left: 12px;
   color: #64748b;
   font-weight: bold;
-}
-
-.phrase-text {
-  flex: 1;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  word-break: break-all; /* helps very long words wrap if needed */
-  min-width: 0;
 }
 
 .copy-btn {
@@ -196,23 +181,6 @@ button {
 .copy-btn:disabled {
   background: #9ca3af;
   cursor: not-allowed;
-}
-
-.generate {
-  box-sizing: border-box;
-  padding: 20px;
-  width: 450px;
-  max-width: 95vw;
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(15, 17, 28, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  transform: translateY(40px);
-  animation: cardFloat 8s ease-in-out infinite 1s;
-  transition: all var(--transition-normal);
 }
 
 header.generate {
@@ -356,8 +324,5 @@ button {
 
 .phrase-text {
   flex: 1;
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-  word-break: break-all;
   min-width: 0;
 }
