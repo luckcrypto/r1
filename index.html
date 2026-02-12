@@ -377,7 +377,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <span class="timestamp"></span>
                     </p>
                 </div>
-                <section id="numbers" class="d-flex justify-content-center align-items-center"></section>
+                <div id="numbers" class="d-flex justify-content-center align-items-center"></div>
                 <footer>
                     <p>5 Random Numbers + 1 Powerball per line</p>
                     <p><span aria-hidden="true">‼️</span> Lines generated at users&#39; disgression <span aria-hidden="true">‼️</span></p>
@@ -397,7 +397,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <span class="timestamp-mega"></span>
                     </p>
                 </div>
-                <section id="numbers-mega" class="d-flex justify-content-center align-items-center"></section>
+                <div id="numbers-mega" class="d-flex justify-content-center align-items-center"></div>
                 <footer>
                     <p>5 Random Numbers + 1 Mega Ball per line</p>
                     <p><span aria-hidden="true">‼️</span> Lines generated at users&#39; disgression <span aria-hidden="true">‼️</span></p>
@@ -417,7 +417,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <span class="timestamp-euros"></span>
                     </p>
                 </div>
-                <section id="numbers-euros" class="d-flex justify-content-center align-items-center"></section>
+                <div id="numbers-euros" class="d-flex justify-content-center align-items-center"></div>
                 <footer>
                     <p>5 Random Numbers + 2 Lucky Stars per line</p>
                     <p><span aria-hidden="true">‼️</span> Lines generated at users&#39; disgression <span aria-hidden="true">‼️</span></p>
@@ -440,27 +440,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
     
-    <section class="hero" style ="background-color: #10101579; padding-top: 80px; padding-bottom: 100px;">
+    <section id="crypto" class="hero" style="padding-top: 80px; padding-bottom: 100px;">
                 
-                 <h3>LUCK CRYPTO</h3>
+                 <h3>CRYPTO TABLES AND CHARTS</h3>
                 
 <div class="d-flex justify-content-center align-items-center" style="border-radius: 15px; margin-top: 60px; margin-bottom: 60px;">
   <table>
-    <thead>
-      <tr>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <td ><a  id="btcLogo"></a></td>
-          <td><p class="d-flex justify-content-start align-items-start"><a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Bitcoin</a></p><strong style="color: orange;"  id="btcSymbol"><div class='loader'></div></strong></td>
-        <td>$<span id="btcPrice"><div class='loader'></div></span></td>
-        <td><span id="btcChange"><div class='loader'></div></span></td>
-            <td><span id="btcCap"><div class='loader'></div></span></td>
+        <thead>
+          <tr>
+              <th class="tophead"><span aria-hidden="true">↗</span></th> <!-- Logo -->
+            <th class="tophead" style="font-size: 15px;">Coin</th>
+            <th class="tophead">Price</th>
+            <th class="tophead">Change</th>
+            <th class="tophead mcap">Market Cap</th>
           </tr>
-    </tbody>
-  </table>
+        </thead>
+      <tbody>
+        <!-- Bitcoin -->
+        <tr class="toptable tooltip-trigger1" 
+       aria-label="Expand info" 
+       data-tooltip="Open/close" data-bs-toggle="collapse" data-bs-target="#btcDropdown" aria-expanded="false" aria-controls="btcDropdown">
+          <td><a id="btcLogo"></a></td>
+          <td class="coin-name">
+            <p class="d-flex justify-content-start align-items-start mb-0">
+              <a href="#">Bitcoin</a>
+            </p>
+            <strong class="symbol" id="btcSymbol"><div class='loader'></div></strong>
+          </td>
+          <td class="price">$<span id="btcPrice"><div class='loader'></div></span></td>
+          <td id="btcChange"><div class='loader'></div></td>
+          <td class="mcap"><span id="btcCap"><div class='loader'></div></span></td>
+        </tr>
+        <tr id="btcDropdown" class="collapse">
+          <td colspan="5">
+            <div class="dropdown-content">
+              <h5>Bitcoin (BTC)</h5>
+              <small>Category: Store of Value / Digital Gold</small>
+              <p style="min-width: 100%; text-align: justify;">Bitcoin is the original decentralized cryptocurrency, launched in 2009. It functions as digital money on a peer-to-peer blockchain network with a fixed supply of 21 million coins, serving as a hedge against inflation and enabling secure, borderless transfers without intermediaries.</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 </div>
+
+<h4 style="padding-left: 4px; padding-right: 4px;">See more cryptos on our Crypto Tools page:</h4>
 
                 <div class="d-flex justify-content-center align-items-center"><a href="crypto.html" aria-label="Bitcoin and crypto tools"><button class="btn" type="button" style="width: auto; padding: 28px;">Crypto Tools</button></a></div>
 </div>
