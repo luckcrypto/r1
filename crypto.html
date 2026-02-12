@@ -109,9 +109,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         window.addEventListener('resize', updateVisibility);
         window.addEventListener('DOMContentLoaded', updateVisibility);
     </script>
-    <div data-aos="fade" data-aos-duration="1200" data-aos-once="true">
-    <main class="main">
-        <div class="app" id="app">
+    <div data-aos="fade" data-aos-duration="1200" data-aos-once="true"><div class="app" id="app">
     <!-- Top Bar -->
     <header class="topbar">
         <div class="left">
@@ -137,11 +135,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
 
         <div class="right">
-            <a class="chip primary" href="lottery-number-generator-global.html">
+            <a class="chip primary" href="generators.html" aria-label="Bitcoin and crypto tools">
                 <i class="fa fa-wrench"></i>
                 <span>Tools</span>
             </a>
-            <a class="chip primary" href="shop.html">
+            <a class="chip primary" href="shop.html" aria-label="Shop Luck.fyi Merchandise">
                 <i class="fas fa-shopping-cart"></i>
                 <span>Lucky Shop</span>
             </a>
@@ -180,7 +178,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
             </a>
 
-            <a class="navLink" href="lottery-winning-odds-world-biggest.html" aria-label="Lottery Odds and Information">
+            <a class="navLink" href="lotteries.html" aria-label="Lottery Odds and Information">
                 <span class="navIco"><i class="fa fa-play-circle"></i></span>
                 <div class="navText">
                     <div class="navTitle">Lotteries</div>
@@ -188,7 +186,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
             </a>
 
-            <a class="navLink" href="lottery-number-generator-global.html" aria-label="Random Lottery Number Generators">
+            <a class="navLink" href="generators.html" aria-label="Random Lottery Number Generators">
                 <span class="navIco"><i class="fa fa-cog"></i></span>
                 <div class="navText">
                     <div class="navTitle">Random Lottery Numbers</div>
@@ -238,7 +236,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
     </aside>
 
-    <!-- Main -->
     <main class="main">
        
         
@@ -252,13 +249,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="d-flex justify-content-center align-items-center" style="border-radius: 15px; margin-top: 80px;">
     <table>
+        <thead>
+          <tr>
+              <th class="tophead"><span aria-hidden="true">↗</span></th> <!-- Logo -->
+            <th class="tophead" style="font-size: 15px;">Coin</th>
+            <th class="tophead">Price</th>
+            <th class="tophead">Change</th>
+            <th class="tophead mcap">Market Cap</th>
+          </tr>
+        </thead>
       <tbody>
         <!-- Bitcoin -->
-        <tr class="toptable" data-bs-toggle="collapse" data-bs-target="#btcDropdown" aria-expanded="false" aria-controls="btcDropdown">
+        <tr class="toptable tooltip-trigger1" 
+       aria-label="Expand info" 
+       data-tooltip="Open/close" data-bs-toggle="collapse" data-bs-target="#btcDropdown" aria-expanded="false" aria-controls="btcDropdown">
           <td><a id="btcLogo"></a></td>
           <td class="coin-name">
             <p class="d-flex justify-content-start align-items-start mb-0">
-              <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Bitcoin</a>
+              <a href="#">Bitcoin</a>
             </p>
             <strong class="symbol" id="btcSymbol"><div class='loader'></div></strong>
           </td>
@@ -271,7 +279,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="dropdown-content">
               <h5>Bitcoin (BTC)</h5>
               <small>Category: Store of Value / Digital Gold</small>
-              <p style="min-width: 100%; text-align: center;">Bitcoin is the original decentralized cryptocurrency, launched in 2009. It functions as digital money on a peer-to-peer blockchain network with a fixed supply of 21 million coins, serving as a hedge against inflation and enabling secure, borderless transfers without intermediaries.</p>
+              <p style="min-width: 100%; text-align: justify;">Bitcoin is the original decentralized cryptocurrency, launched in 2009. It functions as digital money on a peer-to-peer blockchain network with a fixed supply of 21 million coins, serving as a hedge against inflation and enabling secure, borderless transfers without intermediaries.</p>
             </div>
           </td>
         </tr>
@@ -281,7 +289,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <td><a id="ethLogo"></a></td>
           <td class="coin-name">
             <p class="d-flex justify-content-start align-items-start mb-0">
-              <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Ethereum</a>
+              <a href="#">Ethereum</a>
             </p>
             <strong class="symbol" id="ethSymbol"><div class='loader'></div></strong>
           </td>
@@ -294,7 +302,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="dropdown-content">
               <h5>Ethereum (ETH)</h5>
               <small>Category: Smart Contract Platform / Layer-1 Blockchain</small>
-              <p style="min-width: 100%; text-align: center;">Ethereum is a programmable blockchain platform powering smart contracts, decentralized applications (dApps), DeFi, and NFTs. Ether (ETH) fuels network transactions and computation, making it the backbone of Web3 innovation since its 2015 launch.</p>
+              <p style="min-width: 100%; text-align: justify;">Ethereum is a programmable blockchain platform powering smart contracts, decentralized applications (dApps), DeFi, and NFTs. Ether (ETH) fuels network transactions and computation, making it the backbone of Web3 innovation since its 2015 launch.</p>
             </div>
           </td>
         </tr>
@@ -304,7 +312,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <td><a id="usdtLogo"></a></td>
           <td class="coin-name">
             <p class="d-flex justify-content-start align-items-start mb-0">
-              <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Tether</a>
+              <a href="#">Tether</a>
             </p>
             <strong class="symbol" id="usdtSymbol"><div class='loader'></div></strong>
           </td>
@@ -317,7 +325,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="dropdown-content">
               <h5>Tether (USDT)</h5>
               <small>Category: Stablecoin / Fiat-Backed</small>
-              <p style="min-width: 100%; text-align: center;">Tether is the leading dollar-pegged stablecoin, providing price stability in crypto markets. It facilitates trading, remittances, and hedging with 1:1 USD backing and multi-chain availability since 2014.</p>
+              <p style="min-width: 100%; text-align: justify;">Tether is the leading dollar-pegged stablecoin, providing price stability in crypto markets. It facilitates trading, remittances, and hedging with 1:1 USD backing and multi-chain availability since 2014.</p>
             </div>
           </td>
         </tr>
@@ -326,7 +334,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <td><a id="xrpLogo"></a></td>
   <td class="coin-name">
     <p class="d-flex justify-content-start align-items-start mb-0">
-      <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">XRP</a>
+      <a href="#">XRP</a>
     </p>
     <strong class="symbol" id="xrpSymbol"><div class='loader'></div></strong>
   </td>
@@ -339,7 +347,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="dropdown-content">
       <h5>XRP</h5>
       <small>Category: Cross-Border Payments / Bridge Currency</small>
-      <p style="min-width: 100%; text-align: center;">XRP is the native token of the XRP Ledger, designed for fast and low-cost international payments and settlements. Created by Ripple Labs, it enables near-instant transactions (3–5 seconds) with minimal fees, serving as a bridge asset between different currencies in financial systems.</p>
+      <p style="min-width: 100%; text-align: justify;">XRP is the native token of the XRP Ledger, designed for fast and low-cost international payments and settlements. Created by Ripple Labs, it enables near-instant transactions (3–5 seconds) with minimal fees, serving as a bridge asset between different currencies in financial systems.</p>
     </div>
   </td>
 </tr>
@@ -348,7 +356,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <td><a id="bnbLogo"></a></td>
   <td class="coin-name">
     <p class="d-flex justify-content-start align-items-start mb-0">
-      <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">BNB</a>
+      <a href="#">BNB</a>
     </p>
     <strong class="symbol" id="bnbSymbol"><div class='loader'></div></strong>
   </td>
@@ -361,7 +369,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="dropdown-content">
       <h5>BNB (Binance Coin)</h5>
       <small>Category: Exchange Utility Token / BNB Chain Native Coin</small>
-      <p style="min-width: 100%; text-align: center;">BNB is the native cryptocurrency of Binance and the BNB Chain ecosystem. Originally launched to offer trading fee discounts on the Binance exchange, it now powers gas fees, staking, governance, and decentralized applications on BNB Chain, one of the largest smart contract platforms by activity.</p>
+      <p style="min-width: 100%; text-align: justify;">BNB is the native cryptocurrency of Binance and the BNB Chain ecosystem. Originally launched to offer trading fee discounts on the Binance exchange, it now powers gas fees, staking, governance, and decentralized applications on BNB Chain, one of the largest smart contract platforms by activity.</p>
     </div>
   </td>
 </tr>
@@ -369,7 +377,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <td><a id="solLogo"></a></td>
           <td class="coin-name">
             <p class="d-flex justify-content-start align-items-start mb-0">
-              <a data-bs-toggle="tooltip" data-bs-placement="right" href="#" title="BUY">Solana</a>
+              <a href="#">Solana</a>
             </p>
             <strong class="symbol" id="solSymbol"><div class='loader'></div></strong>
           </td>
@@ -382,7 +390,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="dropdown-content">
               <h5>Solana (SOL)</h5>
               <small>Category: High-Performance Layer-1 Blockchain</small>
-              <p style="min-width: 100%; text-align: center;">Solana is a fast, scalable layer-1 blockchain known for high throughput and very low fees. Its native token SOL is used for transaction fees, staking, and governance, powering dApps, DeFi, NFTs, and gaming.</p>
+              <p style="min-width: 100%; text-align: justify;">Solana is a fast, scalable layer-1 blockchain known for high throughput and very low fees. Its native token SOL is used for transaction fees, staking, and governance, powering dApps, DeFi, NFTs, and gaming.</p>
             </div>
           </td>
         </tr>
@@ -393,6 +401,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               
 
 <div style="margin-top: 80px;">
+    
+    <h3 style="padding-left: 4px; padding-right: 4px;">Click the coins in the table to expand more coin information</h3>
 
 <p class="info">We provide real-time tracking of the top cryptocurrencies by market cap, showing you current price, 24h change, and market cap—clear, fast, and accurate. Perfect for keeping tabs on Bitcoin, Ethereum, and the rest without the clutter. Data pulled from reliable feeds, updated constantly.</p>
 
@@ -405,11 +415,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
        Random seed phrase generators
     </a>
 </div>
+    <h4 style="margin-top: 48px; padding-left: 4px; padding-right: 4px;">Click the link above for high-entropy crypto seed phrase generators for maximum security crypto wallets.</h4>
+    
 </div>
                 
-                  </section>
                 
-        <section style="padding-top: 160px; padding-left: 10px; padding-right: 10px; padding-bottom: 120px;" class="herofront" id="overview" data-section="overview">
+                <div style="width: 100vw; margin-top: 80px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: inline-block;">
+        <h3 style="font-size: 16px; color: #50fa7b; margin-bottom: 5px;">Purely Client-Side & Secure</h3>
+        <p style="font-size: 14px; opacity: 0.6; max-width: 500px; margin: 0 auto; line-height: 1.6;">
+            This tool runs locally in your browser. No data is ever transmitted to a server. <br>
+            Always generate phrases on a trusted device and never share your recovery keys.
+        </p>
+    </div></section>
+    
+    </main>
+                
+        <section style="display: none; padding-top: 160px; padding-left: 10px; padding-right: 10px; padding-bottom: 120px;" class="herofront" id="overview" data-section="overview">
             <div class="heroGrid">
                 <div class="heroCopy" style="margin-top: 100px; margin-bottom: -80px">
 
@@ -512,9 +533,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <a href="crypto.html">Crypto</a>
                 <a href="#contact" data-jump="contact">Contact</a>
             </div>
-        </footer>
-    </main>
-</div>
+        </footer></div>
     <div data-aos="zoom-in" data-aos-once="true" style="height: 1px;"></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/aos.min.js"></script>
