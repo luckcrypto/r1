@@ -34,23 +34,45 @@ table {
   transition: all 0.3s ease-in-out;
 }
 
+thead {
+  background: rgba(11, 11, 18, 0.08);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
 tr {
-  font-size: 15px;
+  background: rgba(11, 11, 18, 0.08);
+  font-size: 16px;
   padding: 10px;
 }
 
-tr.toptable {
-  font-size: 15px;
+th.tophead {
+  background: rgba(11, 11, 18, 0.28);
+  font-size: 16px;
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+th.tophead:hover, tr.tophead:active {
+  background: rgba(11, 11, 18, 0.48);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+tr.toptable {
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 tr.toptable:hover, tr.toptable:active {
-  background: rgba(11, 11, 18, 0.28);
+  background: rgba(11, 11, 18, 0.38);
   transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 th {
-  font-size: 12px;
+  font-size: 16px;
   background: #010101;
   line-height: 25px;
   color: white;
@@ -58,10 +80,10 @@ th {
 
 th,
 td {
-  font-size: 12px;
+  font-size: 16px;
   min-width: 100px;
   padding: 5px 5px;
-  color: #ffa800;
+  color: #fefefe;
 }
 
 th:nth-of-type(2),
@@ -106,7 +128,7 @@ td:nth-of-type(2) {
 }
 
 @media (max-width: 768px) {
-  td.mcap {
+  td.mcap, th.mcap {
     display: none;
     font-size: 12px;
     min-width: 100px;

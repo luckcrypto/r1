@@ -55,7 +55,6 @@ header.generate > ul li:last-child {
 }
 
 header.generate > ul li:last-child:after {
-  content: "®";
   position: absolute;
   display: block;
   color: black;
@@ -123,15 +122,6 @@ button {
   width: 40px;
 }
 
-#numbers-12word .LS {
-  border-radius: 0%;
-  height: 45px;
-  width: 45px;
-  color: black;
-  background: url("../../assets/img/lucky-stars.svg") center/cover no-repeat;
-  box-shadow: 0 0 20px rgba(17, 17, 17, 0.5843137255);
-}
-
 #numbers-12word .LUCK {
   border-radius: 100%;
   height: 40px;
@@ -153,19 +143,17 @@ button {
   font-family: monospace;
   font-size: 15px;
   line-height: 1.6;
-  white-space: pre-wrap; /* preserves spaces, allows wrapping */
-  word-wrap: break-word; /* modern: overflow-wrap: break-word; */
+  white-space: pre-wrap;
+  word-wrap: break-word;
   overflow-wrap: break-word;
-  hyphens: auto; /* optional: better wrapping on long words */
+  hyphens: auto;
 }
 
-/* Optional: make it look more like a real seed phrase display */
 .ticket-line {
   text-align: left;
   letter-spacing: 0.4px;
 }
 
-/* If you want numbered lines */
 #numbers-12word li {
   counter-increment: line;
   position: relative;
@@ -352,31 +340,6 @@ button {
   align-items: center;
 }
 
-.ticket-line {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 12px 16px;
-  margin: 8px 0;
-  background: rgba(18, 18, 18, 0.3137254902);
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  font-family: monospace;
-  font-size: 15px;
-  line-height: 1.6;
-  white-space: pre-wrap; /* preserves spaces, allows wrapping */
-  word-wrap: break-word; /* modern: overflow-wrap: break-word; */
-  overflow-wrap: break-word;
-  hyphens: auto; /* optional: better wrapping on long words */
-}
-
-/* Optional: make it look more like a real seed phrase display */
-.ticket-line {
-  text-align: left;
-  letter-spacing: 0.4px;
-}
-
-/* If you want numbered lines */
 #numbers-24word li {
   counter-increment: line;
   position: relative;
@@ -395,28 +358,6 @@ button {
   flex: 1;
   white-space: pre-wrap;
   overflow-wrap: break-word;
-  word-break: break-all; /* helps very long words wrap if needed */
+  word-break: break-all;
   min-width: 0;
-}
-
-.copy-btn {
-  padding: 6px 12px;
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 13px;
-  font-weight: 500;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-
-.copy-btn:hover {
-  background: #2563eb;
-}
-
-.copy-btn:disabled {
-  background: #9ca3af;
-  cursor: not-allowed;
 }
