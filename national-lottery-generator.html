@@ -246,7 +246,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         <div class="d-flex justify-content-center"><h3 style="font-size: 32px;">The National<br>Lottery UK <span aria-hidden="true">🇬🇧</span></h3></div>
         <div class="lottomixer" style="margin-top: -60px;"><canvas id="TNL" width="400" height="400" style="transform: scale(0.48);"></canvas></div>
-        <p style="margin-top: -30px;">Random Numbers Generator</p>
+        <p style="margin-top: -30px;">Random Numbers Generator for<br>The National Lottery - UK Lotto</p>
+        <div style="margin: 0px 0;" class="d-flex justify-content-center">
+  <label for="pattern-select-uk"></label>
+  <select id="pattern-select-uk" class="pattern-btn">
+    <option value="random" selected>Random Order All numbers</option>
+    <option value="1o5e">1 Odd – 5 Even</option>
+    <option value="2o4e">2 Odd – 4 Even</option>
+    <option value="3o3e">3 Odd – 3 Even</option>
+    <option value="4o2e">4 Odd – 2 Even</option>
+    <option value="5o1e">5 Odd – 1 Even</option>
+    <option value="6o">6 Odd Numbers</option>
+    <option value="0o">6 Even Numbers</option>
+  </select>
+</div>
         <div class="d-flex justify-content-center" style="margin-bottom: 20px">
             <button type="button" id="quick-pick-uk" class="btn" style="width: auto;">Generate!</button><button type="button" id="reset-ticket-uk" class="btn" style="width: auto; background: linear-gradient(135deg, #c1104ff3, #5e1831f3);">Reset <span aria-hidden="true">🔄</span></button>
         </div>
