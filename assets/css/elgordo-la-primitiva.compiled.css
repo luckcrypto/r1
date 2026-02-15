@@ -16,7 +16,7 @@
   box-shadow: var(--shadow-lg);
   overflow: hidden;
   transform: translateY(40px);
-  animation: cardFloat 8s ease-in-out infinite 1s;
+  animation: lottoFloat 8s ease-in-out infinite 1s;
   transition: all var(--transition-normal);
 }
 

@@ -59,25 +59,45 @@ body::before {
 }
 
 a {
+  font-size: 16px;
   color: inherit;
+  display: flex;
+  justify-content: center;
   text-decoration: none;
+  align-text: center;
+  transition: color var(--transition-fast);
+}
+
+a.lines {
+  font-size: 16px;
+  color: inherit;
+  display: flex;
+  justify-content: start;
+  text-decoration: none;
+  align-text: center;
   transition: color var(--transition-fast);
 }
 
 span {
-  margin-left: 8px;
-  margin-right: 8px;
+  margin-left: 4px;
+  margin-right: 0px;
 }
 
 a.links {
   color: inherit;
+  display: flex;
+  justify-content: start;
   text-decoration: none;
+  align-text: center;
   transition: color var(--transition-fast);
 }
 
 a.links:hover {
   color: orange;
+  display: flex;
+  justify-content: start;
   text-decoration: none;
+  align-text: center;
   transition: color var(--transition-fast);
 }
 
@@ -723,6 +743,7 @@ code {
   align-items: center;
   justify-content: center;
   color: white;
+  text-shadow: 1px 2px 4px rgba(11, 11, 18, 0.88);
   border-radius: 16px;
   margin-left: 4px;
   margin-right: 4px;
@@ -751,6 +772,7 @@ code {
   transform: translateY(-4px);
   border-color: color-mix(in srgb, var(--accent2) 65%, rgba(255, 255, 255, 0.16));
   background: linear-gradient(135deg, color-mix(in srgb, var(--accent1) 35%, rgba(11, 11, 15, 0.5)), color-mix(in srgb, var(--accent2) 25%, rgba(255, 255, 255, 0.08)));
+  color: white;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5), 0 25px 70px var(--accentGlow);
@@ -983,10 +1005,10 @@ code {
 }
 @keyframes lottoFloat {
   0%, 100% {
-    transform: translateY(40px) rotate(-1deg);
+    transform: translateY(40px);
   }
   50% {
-    transform: translateY(20px) rotate(1deg);
+    transform: translateY(20px);
   }
 }
 .glassCard:hover {
@@ -1760,6 +1782,13 @@ details p {
   }
 }
 @media (max-width: 768px) {
+  span {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  .chip.primary.top1.tools {
+    display: none;
+  }
   .ctaRow {
     visibility: hidden;
     max-height: 0px;
@@ -1991,6 +2020,10 @@ details p {
   }
 }
 @media (max-width: 480px) {
+  span {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
   .chip.primary.top1 {
     display: none;
   }

@@ -1,8 +1,38 @@
 @charset "UTF-8";
-.generate {
+.toggle-btn {
+  font-size: 13px;
+  max-height: 12px;
+  width: auto;
+  margin-bottom: 0px;
+  font-weight: 600;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0);
+  color: white;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.toggle-btn.on {
+  background: transparent;
+  color: rgb(44, 208, 126);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0);
+}
+
+.toggle-btn:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0);
+}
+
+/* Visual feedback when label is hidden */
+#pattern-select-uk:disabled,
+#pattern-label.hidden {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.generate-uk {
   box-sizing: border-box;
   padding: 20px;
-  width: 450px;
+  width: 550px;
   max-width: 95vw;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -11,25 +41,24 @@
   -webkit-backdrop-filter: blur(20px);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
-  transform: translateY(40px);
-  animation: cardFloat 8s ease-in-out infinite 1s;
+  animation: lottoFloat 8s ease-in-out infinite 1s;
   transition: all var(--transition-normal);
 }
 
-header.generate {
+header.generate-uk {
   width: 100%;
   padding: 0 0 20px;
   border-bottom: 1px dashed black;
 }
 
-header.generate > ul,
-header.generate > div {
+header.generate-uk > ul,
+header.generate-uk > div {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-header.generate > ul li {
+header.generate-uk > ul li {
   display: block;
   text-transform: uppercase;
   font-family: sans-serif;
@@ -43,7 +72,7 @@ header.generate > ul li {
   text-align: center;
 }
 
-header.generate > ul li:last-child {
+header.generate-uk > ul li:last-child {
   font-size: 1.5em;
   line-height: 8;
   padding: 0;
@@ -54,7 +83,7 @@ header.generate > ul li:last-child {
   color: white;
 }
 
-header.generate > ul li:last-child:after {
+header.generate-uk > ul li:last-child:after {
   content: "®";
   position: absolute;
   display: block;
@@ -64,12 +93,12 @@ header.generate > ul li:last-child:after {
   font-size: 1.5em;
 }
 
-header.generate > div {
+header.generate-uk > div {
   margin-top: 20px;
   font-size: 1.5em;
 }
 
-footer.generate {
+footer.generate-uk {
   font-size: 1.5em;
   padding-top: 20px;
   border-top: 1px dashed black;
@@ -92,15 +121,17 @@ button {
 
 #numbers-uk {
   padding: 20px;
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
 }
 
 #numbers-uk ul {
   display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-bottom: 3px;
+  width: auto;
+  padding-bottom: 4px;
+  margin-bottom: 5px;
+  border-bottom: 3px dashed rgba(255, 182, 193, 0.28);
 }
 
 #numbers-uk ul:last-child {
@@ -109,14 +140,29 @@ button {
 
 #numbers-uk ul li {
   margin-bottom: 8px;
+  font-size: 18px;
   display: block;
+  border-radius: 50%;
   width: 28px;
   height: 28px;
+  margin-left: 4px;
+  margin-right: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: scaleballs 0.5s ease-in-out;
 }
 
+@keyframes scaleballs {
+  from {
+    transform: scale(0) translateY(-20px);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
 #numbers-uk .number {
   font-weight: bolder;
   height: 40px;
