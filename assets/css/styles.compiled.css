@@ -1556,6 +1556,9 @@ details p {
 }
 
 .footer-top {
+  width: fit !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
   color: rgba(255, 255, 255, 0.7);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   background: rgb(29, 34, 41);
@@ -2103,7 +2106,6 @@ p.text-1 {
 }
 
 .footer-container {
-  width: 100vw;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 400px repeat(4, 1fr);
@@ -2132,7 +2134,7 @@ p.text-1 {
 }
 
 .footer-links {
-  width: 100vw;
+  width: 90vw;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 32px;
