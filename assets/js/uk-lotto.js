@@ -1,16 +1,17 @@
 (function() {
   // DOM element references - UK National Lottery
-  const dateHolder = document.querySelector(".date-today-uk");
-  const timeHolder = document.querySelector(".timestamp-uk");
-  const ticketBody = document.getElementById("numbers-uk");
-  const quickpick = document.getElementById("quick-pick-uk");
-  const resetButton = document.getElementById("reset-ticket-uk");
+  const dateHolder    = document.querySelector(".date-today-uk");
+  const timeHolder    = document.querySelector(".timestamp-uk");
+  const ticketBody    = document.getElementById("numbers-uk");
+  const quickpick     = document.getElementById("quick-pick-uk");
+  const resetButton   = document.getElementById("reset-ticket-uk");
+  const patternSelect = document.getElementById("pattern-select-uk");
 
   const MAX_LINES = 10;
   let lineCount = 0;
 
-  if (quickpick) quickpick.addEventListener("click", addOneLine);
-  if (resetButton) resetButton.addEventListener("click", resetTicket);
+  if (quickpick)    quickpick.addEventListener("click", addOneLine);
+  if (resetButton)  resetButton.addEventListener("click", resetTicket);
 
   // Optional: uncomment to add one line automatically on load
   // addOneLine();
@@ -26,7 +27,9 @@
       timeHolder.textContent = getTimestamp();
     }
 
-    const pick = generatePick();
+    const pattern = patternSelect.value;
+    const pick = generatePickWithPattern(pattern);
+
     const line = document.createElement("ul");
 
     // Add the 6 main numbers
@@ -51,25 +54,19 @@
     copyBtn.style.transition = "all 0.2s";
 
     copyBtn.addEventListener("click", () => {
-      // Get all numbers from this line
       const numbers = Array.from(line.querySelectorAll(".number"))
                            .map(el => el.textContent.trim());
-
-      // For UK Lotto: just the 6 main numbers (space separated)
       const textToCopy = numbers.join(" ");
 
       navigator.clipboard.writeText(textToCopy)
         .then(() => {
-          // Success feedback
           const originalText = copyBtn.textContent;
           copyBtn.textContent = "✅";
-          setTimeout(() => {
-            copyBtn.textContent = originalText;
-          }, 1800);
+          setTimeout(() => { copyBtn.textContent = originalText; }, 1800);
         })
         .catch(err => {
           console.error("Clipboard copy failed:", err);
-          alert("Could not copy — please select the numbers manually.");
+          alert("Could not copy — please select manually.");
         });
     });
 
@@ -93,27 +90,76 @@
     lineCount = 0;
   }
 
-  function generatePick() {
-    const pick = [];
+  // ────────────────────────────────────────────────
+  // Main generation logic with odd/even control
+  // ────────────────────────────────────────────────
+  function generatePickWithPattern(pattern) {
+    const odds  = [];
+    const evens = [];
 
-    // 6 unique numbers from 1–59 (current UK Lotto range)
-    while (pick.length < 6) {
-      const value = randomNumber(59, 1);
-      if (!pick.includes(value)) {
-        pick.push(value);
-      }
+    // UK Lotto: 1–59
+    for (let i = 1; i <= 59; i++) {
+      if (i % 2 === 0) evens.push(i);
+      else             odds.push(i);
     }
 
-    pick.sort((a, b) => a - b);
+    let targetOddCount;
 
+    switch (pattern) {
+      case "random":   return generateRandomPick();
+      case "1o5e":     targetOddCount = 1;  break;
+      case "2o4e":     targetOddCount = 2;  break;
+      case "3o3e":     targetOddCount = 3;  break;
+      case "4o2e":     targetOddCount = 4;  break;
+      case "5o1e":     targetOddCount = 5;  break;
+      case "6o":       targetOddCount = 6;  break;
+      case "0o":       targetOddCount = 0;  break;
+      default:         return generateRandomPick(); // fallback
+    }
+
+    const selected = [];
+
+    // Pick required odds
+    let remainingOdd = targetOddCount;
+    while (remainingOdd > 0 && odds.length > 0) {
+      const idx = Math.floor(Math.random() * odds.length);
+      selected.push(odds.splice(idx, 1)[0]);
+      remainingOdd--;
+    }
+
+    // Pick the rest as evens
+    let remainingEven = 6 - selected.length;
+    while (remainingEven > 0 && evens.length > 0) {
+      const idx = Math.floor(Math.random() * evens.length);
+      selected.push(evens.splice(idx, 1)[0]);
+      remainingEven--;
+    }
+
+    // If we couldn't get enough numbers (very unlikely), fall back to random
+    if (selected.length < 6) {
+      console.warn("Couldn't satisfy pattern — falling back to random");
+      return generateRandomPick();
+    }
+
+    selected.sort((a, b) => a - b);
+    return selected;
+  }
+
+  function generateRandomPick() {
+    const pick = [];
+    while (pick.length < 6) {
+      const value = randomNumber(59, 1);
+      if (!pick.includes(value)) pick.push(value);
+    }
+    pick.sort((a, b) => a - b);
     return pick;
   }
 
   function getDate() {
     const today = new Date();
     const month = today.getMonth() + 1;
-    const day = today.getDate();
-    const year = today.getFullYear();
+    const day   = today.getDate();
+    const year  = today.getFullYear();
     return `${month}/${day}/${year}`;
   }
 
