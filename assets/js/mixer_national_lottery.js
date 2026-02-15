@@ -30,7 +30,8 @@ function startLotteryDrum(canvasId) {
         if (number <= 20) return '#87CEEB';
         if (number <= 30) return '#FFB6C1';
         if (number <= 40) return '#7CFC00';
-        return '#FFFF00';
+        if (number <= 50) return '#FFFF00';
+        return '#c985ff';
     }
 
     class Ball {
@@ -146,7 +147,7 @@ function startLotteryDrum(canvasId) {
     const balls = [];
     const bottomOffset = innerDrumRadius * 0.65;
     const spreadRadius = innerDrumRadius * 0.7;
-    for (let i = 1; i <= 50; i++) {
+    for (let i = 1; i <= 59; i++) {
         const size = 14;
         let x, y, dist;
         do {

@@ -7,15 +7,71 @@
   const resetButton   = document.getElementById("reset-ticket-uk");
   const patternSelect = document.getElementById("pattern-select-uk");
 
+  // New toggle elements
+  const toggleBtn     = document.getElementById("toggle-pattern-btn");
+  const patternRow    = document.getElementById("pattern-row");
+
   const MAX_LINES = 10;
   let lineCount = 0;
 
-  if (quickpick)    quickpick.addEventListener("click", addOneLine);
-  if (resetButton)  resetButton.addEventListener("click", resetTicket);
+  // Pattern filter state – default is OFF
+  let patternFilterEnabled = false;
 
-  // Optional: uncomment to add one line automatically on load
-  // addOneLine();
+  // ────────────────────────────────────────────────
+  // Color function – same as in your drum animation
+  // ────────────────────────────────────────────────
+  function getBallColor(number) {
+    const n = Number(number);
+    if (n <= 10) return '#ffffff';      // white
+    if (n <= 20) return '#87CEEB';      // sky blue
+    if (n <= 30) return '#FFB6C1';      // light pink
+    if (n <= 40) return '#7CFC00';      // lime green
+      if (n <= 50) return '#FFFF00';     // bright yellow (41–59)
+    return '#c985ff';                  
+  }
 
+  // ────────────────────────────────────────────────
+  // Initial setup – hide pattern row on load
+  // ────────────────────────────────────────────────
+  if (patternRow) {
+    patternRow.hidden = true;
+  }
+  if (patternSelect) {
+    patternSelect.disabled = true;
+    patternSelect.value = "random";
+  }
+  if (toggleBtn) {
+    toggleBtn.innerHTML = `🎰‎ ‎ Advanced settings‎ ‎ ‎-‎ ‎ ‎ <strong>OFF</strong>`;
+    toggleBtn.classList.remove("on");
+  }
+
+  // ────────────────────────────────────────────────
+  // Event listeners
+  // ────────────────────────────────────────────────
+  if (quickpick) quickpick.addEventListener("click", addOneLine);
+  if (resetButton) resetButton.addEventListener("click", resetTicket);
+
+  if (toggleBtn && patternRow && patternSelect) {
+    toggleBtn.addEventListener("click", () => {
+      patternFilterEnabled = !patternFilterEnabled;
+
+      toggleBtn.innerHTML = `🎰‎ ‎ Advanced settings‎ ‎ ‎-‎ ‎ ‎ <strong>${patternFilterEnabled ? "ON" : "OFF"}</strong>`;
+      toggleBtn.classList.toggle("on", patternFilterEnabled);
+
+      if (patternFilterEnabled) {
+        patternRow.hidden = false;
+        patternSelect.disabled = false;
+      } else {
+        patternRow.hidden = true;
+        patternSelect.disabled = true;
+        patternSelect.value = "random";
+      }
+    });
+  }
+
+  // ────────────────────────────────────────────────
+  // Core functions
+  // ────────────────────────────────────────────────
   function addOneLine() {
     if (lineCount >= MAX_LINES) {
       alert("You've reached the maximum of 10 lines! Click reset to start again.");
@@ -27,26 +83,49 @@
       timeHolder.textContent = getTimestamp();
     }
 
-    const pattern = patternSelect.value;
+    let pattern = "random";
+    if (patternFilterEnabled && !patternRow.hidden) {
+      pattern = patternSelect.value;
+    }
+
     const pick = generatePickWithPattern(pattern);
 
+    // Create the visual line
     const line = document.createElement("ul");
 
-    // Add the 6 main numbers
     pick.forEach((value, index) => {
       const number = document.createElement("li");
       number.className = `num${index + 1} number`;
+
+      // ── Apply the same color as in the drum ──
+      const bgColor = getBallColor(value);
+      number.style.backgroundColor = bgColor;
+
+      // Optional: better contrast adjustments
+      // White & yellow backgrounds → dark text
+      if (bgColor === '#ffffff' || bgColor === '#FFFF00') {
+        number.style.color = '#111111';
+        number.style.textShadow = '0 1px 1px rgba(0,0,0,0.1)';
+      } else {
+        number.style.color = '#000000';
+        number.style.textShadow = '0 1px 2px rgba(0,0,0,0.1)';
+      }
+
+      // Optional: slight border / shadow to look more like balls
+      number.style.boxShadow = 'inset 0 2px 6px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.4)';
+      number.style.border = '1px solid rgba(0,0,0,0.25)';
+
       number.textContent = value < 10 ? `0${value}` : value;
       line.appendChild(number);
     });
 
-    // Copy button for this line
+    // Copy button
     const copyBtn = document.createElement("li");
     copyBtn.className = "copy-btn";
-    copyBtn.textContent = "📋";
+    copyBtn.textContent = "copy";
     copyBtn.title = "Copy this line";
     copyBtn.style.cursor = "pointer";
-    copyBtn.style.fontSize = "1.3em";
+    copyBtn.style.fontSize = "10px";
     copyBtn.style.marginLeft = "10px";
     copyBtn.style.padding = "4px 8px";
     copyBtn.style.borderRadius = "6px";
@@ -60,17 +139,16 @@
 
       navigator.clipboard.writeText(textToCopy)
         .then(() => {
-          const originalText = copyBtn.textContent;
+          const original = copyBtn.textContent;
           copyBtn.textContent = "✅";
-          setTimeout(() => { copyBtn.textContent = originalText; }, 1800);
+          setTimeout(() => { copyBtn.textContent = original; }, 1800);
         })
         .catch(err => {
-          console.error("Clipboard copy failed:", err);
+          console.error("Clipboard failed:", err);
           alert("Could not copy — please select manually.");
         });
     });
 
-    // Hover effect
     copyBtn.addEventListener("mouseenter", () => {
       copyBtn.style.background = "rgba(255,255,255,0.25)";
     });
@@ -91,35 +169,30 @@
   }
 
   // ────────────────────────────────────────────────
-  // Main generation logic with odd/even control
+  // Number generation (unchanged)
   // ────────────────────────────────────────────────
   function generatePickWithPattern(pattern) {
-    const odds  = [];
+    const odds = [];
     const evens = [];
-
-    // UK Lotto: 1–59
     for (let i = 1; i <= 59; i++) {
       if (i % 2 === 0) evens.push(i);
-      else             odds.push(i);
+      else odds.push(i);
     }
 
     let targetOddCount;
-
     switch (pattern) {
-      case "random":   return generateRandomPick();
-      case "1o5e":     targetOddCount = 1;  break;
-      case "2o4e":     targetOddCount = 2;  break;
-      case "3o3e":     targetOddCount = 3;  break;
-      case "4o2e":     targetOddCount = 4;  break;
-      case "5o1e":     targetOddCount = 5;  break;
-      case "6o":       targetOddCount = 6;  break;
-      case "0o":       targetOddCount = 0;  break;
-      default:         return generateRandomPick(); // fallback
+      case "random": return generateRandomPick();
+      case "1o5e": targetOddCount = 1; break;
+      case "2o4e": targetOddCount = 2; break;
+      case "3o3e": targetOddCount = 3; break;
+      case "4o2e": targetOddCount = 4; break;
+      case "5o1e": targetOddCount = 5; break;
+      case "6o":   targetOddCount = 6; break;
+      case "0o":   targetOddCount = 0; break;
+      default:     return generateRandomPick();
     }
 
     const selected = [];
-
-    // Pick required odds
     let remainingOdd = targetOddCount;
     while (remainingOdd > 0 && odds.length > 0) {
       const idx = Math.floor(Math.random() * odds.length);
@@ -127,7 +200,6 @@
       remainingOdd--;
     }
 
-    // Pick the rest as evens
     let remainingEven = 6 - selected.length;
     while (remainingEven > 0 && evens.length > 0) {
       const idx = Math.floor(Math.random() * evens.length);
@@ -135,9 +207,8 @@
       remainingEven--;
     }
 
-    // If we couldn't get enough numbers (very unlikely), fall back to random
     if (selected.length < 6) {
-      console.warn("Couldn't satisfy pattern — falling back to random");
+      console.warn("Pattern fallback to random");
       return generateRandomPick();
     }
 
@@ -155,11 +226,14 @@
     return pick;
   }
 
+  // ────────────────────────────────────────────────
+  // Helpers
+  // ────────────────────────────────────────────────
   function getDate() {
     const today = new Date();
     const month = today.getMonth() + 1;
-    const day   = today.getDate();
-    const year  = today.getFullYear();
+    const day = today.getDate();
+    const year = today.getFullYear();
     return `${month}/${day}/${year}`;
   }
 
