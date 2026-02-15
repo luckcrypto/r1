@@ -16,6 +16,20 @@
   transition: all var(--transition-normal);
 }
 
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: scale(1.08);
+}
+
+.copy-btn:active {
+  transform: scale(0.96);
+}
+
+.copy-btn {
+  user-select: none;
+  transition: all 0.18s ease;
+}
+
 header.generate {
   width: 100%;
   padding: 0 0 20px;
