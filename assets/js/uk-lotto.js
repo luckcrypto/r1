@@ -1,18 +1,18 @@
 (function() {
-  // DOM element references - UK National Lottery style (6/50 only)
+  // DOM element references - UK National Lottery
   const dateHolder = document.querySelector(".date-today-uk");
   const timeHolder = document.querySelector(".timestamp-uk");
   const ticketBody = document.getElementById("numbers-uk");
   const quickpick = document.getElementById("quick-pick-uk");
   const resetButton = document.getElementById("reset-ticket-uk");
-  
+
   const MAX_LINES = 10;
   let lineCount = 0;
 
   if (quickpick) quickpick.addEventListener("click", addOneLine);
   if (resetButton) resetButton.addEventListener("click", resetTicket);
 
-  // Optional: start with one line on load
+  // Optional: uncomment to add one line automatically on load
   // addOneLine();
 
   function addOneLine() {
@@ -29,6 +29,7 @@
     const pick = generatePick();
     const line = document.createElement("ul");
 
+    // Add the 6 main numbers
     pick.forEach((value, index) => {
       const number = document.createElement("li");
       number.className = `num${index + 1} number`;
@@ -36,12 +37,51 @@
       line.appendChild(number);
     });
 
-    // Optional lucky symbol at the end
-    const luck = document.createElement("li");
-    luck.textContent = "🤞";
-    luck.className = "🤞";
-    line.appendChild(luck);
+    // Copy button for this line
+    const copyBtn = document.createElement("li");
+    copyBtn.className = "copy-btn";
+    copyBtn.textContent = "📋";
+    copyBtn.title = "Copy this line";
+    copyBtn.style.cursor = "pointer";
+    copyBtn.style.fontSize = "1.3em";
+    copyBtn.style.marginLeft = "10px";
+    copyBtn.style.padding = "4px 8px";
+    copyBtn.style.borderRadius = "6px";
+    copyBtn.style.background = "rgba(255,255,255,0.12)";
+    copyBtn.style.transition = "all 0.2s";
 
+    copyBtn.addEventListener("click", () => {
+      // Get all numbers from this line
+      const numbers = Array.from(line.querySelectorAll(".number"))
+                           .map(el => el.textContent.trim());
+
+      // For UK Lotto: just the 6 main numbers (space separated)
+      const textToCopy = numbers.join(" ");
+
+      navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+          // Success feedback
+          const originalText = copyBtn.textContent;
+          copyBtn.textContent = "✅";
+          setTimeout(() => {
+            copyBtn.textContent = originalText;
+          }, 1800);
+        })
+        .catch(err => {
+          console.error("Clipboard copy failed:", err);
+          alert("Could not copy — please select the numbers manually.");
+        });
+    });
+
+    // Hover effect
+    copyBtn.addEventListener("mouseenter", () => {
+      copyBtn.style.background = "rgba(255,255,255,0.25)";
+    });
+    copyBtn.addEventListener("mouseleave", () => {
+      copyBtn.style.background = "rgba(255,255,255,0.12)";
+    });
+
+    line.appendChild(copyBtn);
     ticketBody.appendChild(line);
     lineCount++;
   }
@@ -55,13 +95,17 @@
 
   function generatePick() {
     const pick = [];
+
+    // 6 unique numbers from 1–59 (current UK Lotto range)
     while (pick.length < 6) {
-      const value = randomNumber(50, 1);
+      const value = randomNumber(59, 1);
       if (!pick.includes(value)) {
         pick.push(value);
       }
     }
+
     pick.sort((a, b) => a - b);
+
     return pick;
   }
 
