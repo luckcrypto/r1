@@ -14,25 +14,18 @@
   const MAX_LINES = 10;
   let lineCount = 0;
 
-  // Pattern filter state – default is OFF
   let patternFilterEnabled = false;
 
-  // ────────────────────────────────────────────────
-  // Color function – same as in your drum animation
-  // ────────────────────────────────────────────────
   function getBallColor(number) {
     const n = Number(number);
     if (n <= 10) return '#ffffff';      // white
     if (n <= 20) return '#87CEEB';      // sky blue
     if (n <= 30) return '#FFB6C1';      // light pink
     if (n <= 40) return '#7CFC00';      // lime green
-      if (n <= 50) return '#FFFF00';     // bright yellow (41–59)
+      if (n <= 50) return '#FFFF00';
     return '#c985ff';                  
   }
 
-  // ────────────────────────────────────────────────
-  // Initial setup – hide pattern row on load
-  // ────────────────────────────────────────────────
   if (patternRow) {
     patternRow.hidden = true;
   }
@@ -41,7 +34,7 @@
     patternSelect.value = "random";
   }
   if (toggleBtn) {
-    toggleBtn.innerHTML = `🎰‎ ‎ Advanced settings‎ ‎ ‎-‎ ‎ ‎ <strong>OFF</strong>`;
+    toggleBtn.innerHTML = `Advanced settings:‎ ‎ ‎ <strong>Disabled</strong>`;
     toggleBtn.classList.remove("on");
   }
 
@@ -55,7 +48,7 @@
     toggleBtn.addEventListener("click", () => {
       patternFilterEnabled = !patternFilterEnabled;
 
-      toggleBtn.innerHTML = `🎰‎ ‎ Advanced settings‎ ‎ ‎-‎ ‎ ‎ <strong>${patternFilterEnabled ? "ON" : "OFF"}</strong>`;
+      toggleBtn.innerHTML = `Advanced settings:‎ ‎ ‎ <strong>${patternFilterEnabled ? "Enabled" : "Disabled"}</strong>`;
       toggleBtn.classList.toggle("on", patternFilterEnabled);
 
       if (patternFilterEnabled) {
