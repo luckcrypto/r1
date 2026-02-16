@@ -747,7 +747,7 @@ code {
   border-radius: 16px;
   margin-left: 4px;
   margin-right: 4px;
-  border: 1px solid color-mix(in srgb, var(--accent2) 65%, rgba(255, 255, 255, 0.16));
+  border: 1px solid rgba(255, 255, 255, 0.16);
   background: linear-gradient(135deg, color-mix(in srgb, var(--accent1) 35%, rgba(11, 11, 15, 0.5)), color-mix(in srgb, var(--accent2) 25%, rgba(255, 255, 255, 0.08)));
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
@@ -763,6 +763,7 @@ code {
   content: "";
   position: absolute;
   inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
   opacity: 0;
   transition: opacity var(--transition-normal);
