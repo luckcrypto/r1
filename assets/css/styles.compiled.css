@@ -2169,6 +2169,7 @@ p.text-1 {
 .site-footer {
   background: rgba(255, 255, 255, 0.03);
   width: 100vw;
+  max-width: 95% !important;
   color: #c9d1d9;
   padding-bottom: 148px;
   padding-top: 28px;
