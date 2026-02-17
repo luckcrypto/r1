@@ -1,4 +1,23 @@
 @charset "UTF-8";
+#entropy-overlay,
+#entropy-canvas {
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+
+#entropy-canvas {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (max-width: 500px) {
+  #entropy-box {
+    padding: 16px 12px;
+  }
+  #entropy-progress-text {
+    font-size: 15px;
+  }
+}
 .toggle-btn {
   display: flex;
   justify-content: center;
