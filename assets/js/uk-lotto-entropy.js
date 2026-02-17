@@ -1,26 +1,25 @@
 // uk-lotto-generator.js
-// UK Lotto generator with working advanced toggle + mouse-entropy collection modal
-
+// UK Lotto generator with working advanced toggle + mouse + touch entropy collection modal
 (function() {
     // ────────────────────────────────────────────────
     // DOM references
     // ────────────────────────────────────────────────
-    const dateHolder       = document.querySelector(".date-today-uk-entropy");
-    const timeHolder       = document.querySelector(".timestamp-uk-entropy");
-    const ticketBody       = document.getElementById("numbers-uk-entropy");
-    const quickpick        = document.getElementById("quick-pick-uk-entropy");
-    const resetButton      = document.getElementById("reset-ticket-uk-entropy");
-    const patternSelect    = document.getElementById("pattern-select-uk-entropy");
-    const toggleBtn        = document.getElementById("toggle-pattern-btn");
-    const patternRow       = document.getElementById("pattern-row");
+    const dateHolder = document.querySelector(".date-today-uk-entropy");
+    const timeHolder = document.querySelector(".timestamp-uk-entropy");
+    const ticketBody = document.getElementById("numbers-uk-entropy");
+    const quickpick = document.getElementById("quick-pick-uk-entropy");
+    const resetButton = document.getElementById("reset-ticket-uk-entropy");
+    const patternSelect = document.getElementById("pattern-select-uk-entropy");
+    const toggleBtn = document.getElementById("toggle-pattern-btn");
+    const patternRow = document.getElementById("pattern-row");
 
-    // Entropy modal elements (must exist in HTML)
-    const entropyOverlay   = document.getElementById("entropy-overlay");
-    const entropyCanvas    = document.getElementById("entropy-canvas");
+    // Entropy modal elements
+    const entropyOverlay = document.getElementById("entropy-overlay");
+    const entropyCanvas = document.getElementById("entropy-canvas");
     const entropyProgressBar = document.getElementById("entropy-progress-bar");
     const entropyProgressText = document.getElementById("entropy-progress-text");
-    const entropyDone      = document.getElementById("entropy-done");
-    const entropyCancel    = document.getElementById("entropy-cancel");
+    const entropyDone = document.getElementById("entropy-done");
+    const entropyCancel = document.getElementById("entropy-cancel");
 
     const MAX_LINES = 10;
     let lineCount = 0;
@@ -52,6 +51,7 @@
     // ────────────────────────────────────────────────
     if (quickpick) quickpick.addEventListener("click", handleQuickPick);
     if (resetButton) resetButton.addEventListener("click", resetTicket);
+
     if (toggleBtn) {
         toggleBtn.addEventListener("click", () => {
             patternFilterEnabled = !patternFilterEnabled;
@@ -67,12 +67,19 @@
             }
         });
     }
-    if (entropyCanvas) entropyCanvas.addEventListener("mousemove", collectEntropy);
+
+    // Entropy canvas – mouse + touch support
+    if (entropyCanvas) {
+        entropyCanvas.addEventListener("mousemove", collectEntropy);
+        entropyCanvas.addEventListener("touchmove", collectEntropyTouch, { passive: false });
+        entropyCanvas.addEventListener("touchstart", collectEntropyTouch, { passive: false });
+    }
+
     if (entropyDone) entropyDone.addEventListener("click", finishEntropyCollection);
     if (entropyCancel) entropyCancel.addEventListener("click", cancelEntropyCollection);
 
     // ────────────────────────────────────────────────
-    // Entropy collection logic
+    // Entropy collection logic (mouse + touch)
     // ────────────────────────────────────────────────
     function handleQuickPick() {
         if (!entropySeed) {
@@ -109,7 +116,29 @@
         if (trailPositions.length > 1024) trailPositions.shift();
 
         updateEntropyProgress();
+        checkEntropyReady();
+    }
 
+    function collectEntropyTouch(e) {
+        if (!collectingEntropy) return;
+        e.preventDefault(); // prevent scrolling
+
+        const rect = entropyCanvas.getBoundingClientRect();
+        const touch = e.touches[0];
+
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+        const time = performance.now();
+
+        entropyData.push({x, y, time});
+        trailPositions.push({x, y});
+        if (trailPositions.length > 1024) trailPositions.shift();
+
+        updateEntropyProgress();
+        checkEntropyReady();
+    }
+
+    function checkEntropyReady() {
         if (entropyData.length >= ENTROPY_REQUIRED) {
             entropyDone.disabled = false;
             entropyDone.style.opacity = "1";
@@ -127,10 +156,9 @@
         const data = encoder.encode(entropyString);
         const hashBuffer = await crypto.subtle.digest('SHA-256', data);
         const hashArray = new Uint32Array(hashBuffer);
-
         entropySeed = hashArray;
-        rng = sfc32(entropySeed[0], entropySeed[1], entropySeed[2], entropySeed[3]);
 
+        rng = sfc32(entropySeed[0], entropySeed[1], entropySeed[2], entropySeed[3]);
         addOneLine();
     }
 
@@ -166,7 +194,7 @@
     }
 
     // ────────────────────────────────────────────────
-    // Core generation
+    // Core generation logic (unchanged)
     // ────────────────────────────────────────────────
     function addOneLine() {
         if (lineCount >= MAX_LINES) {
@@ -187,14 +215,11 @@
         const pick = generatePickWithPattern(pattern);
 
         const line = document.createElement("ul");
-
         pick.forEach((value, index) => {
             const number = document.createElement("li");
             number.className = `num${index + 1} number`;
-
             const bgColor = getBallColor(value);
             number.style.backgroundColor = bgColor;
-
             if (bgColor === '#ffffff' || bgColor === '#FFFF00') {
                 number.style.color = '#111111';
                 number.style.textShadow = '0 1px 1px rgba(0,0,0,0.1)';
@@ -202,11 +227,9 @@
                 number.style.color = '#000000';
                 number.style.textShadow = '0 1px 2px rgba(0,0,0,0.1)';
             }
-
             number.style.boxShadow = 'inset 0 2px 6px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.4)';
             number.style.border = '1px solid rgba(0,0,0,0.25)';
             number.textContent = value < 10 ? `0${value}` : value;
-
             line.appendChild(number);
         });
 
@@ -259,7 +282,7 @@
     }
 
     // ────────────────────────────────────────────────
-    // Number generation
+    // Number generation (unchanged)
     // ────────────────────────────────────────────────
     function generatePickWithPattern(pattern) {
         const odds = [], evens = [];
@@ -278,7 +301,7 @@
             case "5o1e": targetOddCount = 5; break;
             case "6o":   targetOddCount = 6; break;
             case "0o":   targetOddCount = 0; break;
-            default:     return generateRandomPick();
+            default: return generateRandomPick();
         }
 
         const selected = [];
@@ -332,16 +355,16 @@
     }
 
     // ────────────────────────────────────────────────
-    // Helpers
+    // Helpers (unchanged)
     // ────────────────────────────────────────────────
     function getBallColor(number) {
         const n = Number(number);
-        if (n <= 10) return '#ffffff';     // white
-        if (n <= 20) return '#87CEEB';     // sky blue
-        if (n <= 30) return '#FFB6C1';     // light pink
-        if (n <= 40) return '#7CFC00';     // lime green
-        if (n <= 50) return '#FFFF00';     // yellow
-        return '#c985ff';                  // purple
+        if (n <= 10) return '#ffffff';
+        if (n <= 20) return '#87CEEB';
+        if (n <= 30) return '#FFB6C1';
+        if (n <= 40) return '#7CFC00';
+        if (n <= 50) return '#FFFF00';
+        return '#c985ff';
     }
 
     function getDate() {
