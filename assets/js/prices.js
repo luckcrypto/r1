@@ -9,7 +9,7 @@ function getMarketData() {
 
 function getCryptoCompare() {
   $.when(
-    $.get("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,USDT,XRP,BNB,SOL,BCH,XAUT&tsyms=USD")
+    $.get("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,USDT,XRP,BNB,SOL,DOGE,BCH,XAUT&tsyms=USD")
   ).done(function (data) {
     $("#btcLogo").html('<img src="https://cryptocompare.com' + data.RAW.BTC.USD.IMAGEURL + '">');
     $("#btcSymbol").text((data.RAW.BTC.USD.FROMSYMBOL).toLocaleString());
@@ -58,10 +58,18 @@ function getCryptoCompare() {
     $("#solVol").text((data.RAW.SOL.USD.VOLUME24HOUR).toLocaleString("en-US", {style: "currency", currency: "USD"}));
     $("#solCap").text((data.RAW.SOL.USD.MKTCAP).toLocaleString("en-US", {style: "currency", currency: "USD"}));
     $("#solTime").text( (new Date(data.RAW.SOL.USD.LASTUPDATE * 1000) ).toLocaleString());
+      
+    $("#dogeLogo").html('<img src="https://cryptocompare.com' + data.RAW.DOGE.USD.IMAGEURL + '">');
+    $("#dogeSymbol").text((data.RAW.DOGE.USD.FROMSYMBOL).toLocaleString());
+    $("#dogePrice").text((data.RAW.DOGE.USD.PRICE).toFixed(4).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+    $("#dogeChange").text((data.RAW.DOGE.USD.CHANGEPCT24HOUR).toFixed(2) + "‎ ‎%");
+    $("#dogeVol").text((data.RAW.DOGE.USD.VOLUME24HOUR).toLocaleString("en-US", {style: "currency", currency: "USD"}));
+    $("#dogeCap").text((data.RAW.DOGE.USD.MKTCAP).toLocaleString("en-US", {style: "currency", currency: "USD"}));
+    $("#dogeTime").text( (new Date(data.RAW.DOGE.USD.LASTUPDATE * 1000) ).toLocaleString());
     
     $("#bchLogo").html('<img src="https://cryptocompare.com' + data.RAW.BCH.USD.IMAGEURL + '">');
     $("#bchSymbol").text((data.RAW.BCH.USD.FROMSYMBOL).toLocaleString());
-    $("#bchPrice").text((data.RAW.BCH.USD.PRICE).toFixed(4).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
+    $("#bchPrice").text((data.RAW.BCH.USD.PRICE).toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, '$1,'));
     $("#bchChange").text((data.RAW.BCH.USD.CHANGEPCT24HOUR).toFixed(2) + "‎ ‎%");
     $("#bchVol").text((data.RAW.BCH.USD.VOLUME24HOUR).toLocaleString("en-US", {style: "currency", currency: "USD"}));
     $("#bchCap").text((data.RAW.BCH.USD.MKTCAP).toLocaleString("en-US", {style: "currency", currency: "USD"}));
@@ -79,7 +87,7 @@ function getCryptoCompare() {
 
 
 
-$("#btcChange, #ethChange, #usdtChange, #xrpChange, #bnbChange, #solChange, #bchChange, #xautChange").bind("DOMSubtreeModified", function(){
+$("#btcChange, #ethChange, #usdtChange, #xrpChange, #bnbChange, #solChange, #dogeChange, #bchChange, #xautChange").bind("DOMSubtreeModified", function(){
   if($(this).is(":contains('-')")) {
     $(this).removeClass("positive").addClass("negative");
   } else {
