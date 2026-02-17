@@ -93,8 +93,8 @@ td:nth-of-type(2) {
 }
 
 .dropdown-content {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(11, 11, 18, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(rgba(11, 11, 18, 0.18), rgba(4, 4, 8, 0.38));
   padding: 28px;
   margin-top: 20px;
   opacity: 0;

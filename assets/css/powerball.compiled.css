@@ -118,24 +118,20 @@ button {
 }
 
 #numbers .number {
+  border-radius: 100%;
   font-weight: bolder;
+  color: black;
+  background: linear-gradient(135deg, rgba(250, 250, 250, 0.9529411765), rgba(255, 255, 255, 0.9529411765));
+  box-shadow: inset 0 0 8px rgba(17, 17, 17, 0.5843137255);
   height: 40px;
   width: 40px;
 }
 
 #numbers .PB {
   border-radius: 100%;
+  color: white;
   height: 40px;
   width: 40px;
   background: linear-gradient(135deg, rgba(193, 16, 79, 0.9529411765), rgba(94, 24, 49, 0.9529411765));
   box-shadow: 0 0 20px rgba(17, 17, 17, 0.5843137255);
-}
-
-#numbers .LUCK {
-  border-radius: 100%;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

@@ -1,21 +1,4 @@
 @charset "UTF-8";
-.generate {
-  box-sizing: border-box;
-  padding: 20px;
-  width: 450px;
-  max-width: 95vw;
-  border-radius: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(15, 17, 28, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-lg);
-  overflow: hidden;
-  transform: translateY(40px);
-  animation: lottoFloat 8s ease-in-out infinite 1s;
-  transition: all var(--transition-normal);
-}
-
 header.generate {
   width: 100%;
   padding: 0 0 20px;
@@ -118,7 +101,11 @@ button {
 }
 
 #numbers-mega .number {
+  border-radius: 100%;
   font-weight: bolder;
+  color: black;
+  background: linear-gradient(135deg, rgba(250, 250, 250, 0.9529411765), rgba(255, 255, 255, 0.9529411765));
+  box-shadow: inset 0 0 8px rgba(17, 17, 17, 0.5843137255);
   height: 40px;
   width: 40px;
 }

@@ -118,6 +118,7 @@ code {
 
 .topbar {
   top: 0;
+  height: 95px;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -212,12 +213,13 @@ code {
 }
 
 .iconBtn {
-  width: 46px;
-  height: 46px;
+  width: 54px;
+  height: 54px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(255, 255, 255, 0.08);
-  color: var(--text);
+  font-size: 22px;
+  color: rgba(222, 222, 255, 0.95);
   cursor: pointer;
   display: grid;
   place-items: center;
@@ -238,6 +240,7 @@ code {
 .iconBtn:hover {
   transform: translateY(-2px);
   border-color: color-mix(in srgb, var(--accent2) 60%, rgba(255, 255, 255, 0.16));
+  color: white;
   background: rgba(255, 255, 255, 0.12);
   box-shadow: 0 12px 30px var(--accentGlow);
 }
@@ -613,7 +616,6 @@ code {
 }
 
 .hero {
-  padding: 10px 0px 10px;
   position: relative;
   overflow: hidden;
 }
@@ -681,8 +683,8 @@ code {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
   text-transform: uppercase;
   line-height: 1.5;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 20px;
+  margin-right: 20px;
   padding-top: 48px;
   margin-bottom: 48px;
   font-size: 24px;
@@ -781,10 +783,6 @@ code {
 
 .btn:hover::before {
   opacity: 1;
-}
-
-.btn:active {
-  transform: translateY(0) scale(0.98);
 }
 
 .btn i {
@@ -1274,18 +1272,12 @@ code {
 }
 
 .section h2 {
-  margin: 0;
   font-size: 36px;
   letter-spacing: -0.3px;
   font-weight: 800;
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.section h2 i {
-  color: var(--accent2);
-  font-size: 32px;
 }
 
 .sub {
@@ -1621,7 +1613,7 @@ details p {
   margin-right: 0px !important;
   color: rgba(255, 255, 255, 0.7);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgb(29, 34, 41);
+  background: rgb(21, 20, 31);
   padding-top: 38px;
 }
 
@@ -1829,6 +1821,12 @@ details p {
   .lucky {
     display: flex !important;
     max-width: 92vw;
+    background: linear-gradient(90deg, #00f0ff, #ff00ea, #ffd700, #ffff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-text-stroke: 0;
+    text-stroke: 0;
   }
   .tooltip-trigger {
     position: relative;
