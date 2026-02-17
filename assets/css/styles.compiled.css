@@ -276,6 +276,21 @@ code {
   display: none !important;
 }
 
+.lucky1 {
+  width: auto;
+  max-width: 280px;
+  line-height: 1.5;
+  font-size: 28px;
+  font-weight: 700;
+  text-shadow: 1px 2px 8px rgba(11, 11, 18, 0.08);
+  background: linear-gradient(90deg, #00f0ff, #ff00ea, #ffd700, #ffff00);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-text-stroke: 0;
+  text-stroke: 0;
+}
+
 .brandName {
   color: white;
   font-weight: 800;
