@@ -228,32 +228,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div style="border-radius: 15px;" class="d-flex justify-content-center">
    
                 <!-- Entropy collection overlay – TOUCH/MOBILE SUPPORT ADDED -->
-                <div id="entropy-overlay" style="
-                  display: none;
-                  position: fixed;
-                  inset: 0;
-                  background: linear-gradient(
-                        135deg,
-                        #2e344e48 0%,
-                        #1c1f2b48 50%,
-                        #241b2e48 100%
-                    );
-                  z-index: 9999;
-                  justify-content: center;
-                  align-items: flex-start;
-                  padding-top: 80px;
-                  opacity: 0;
-                  transition: opacity 0.4s ease;
-                  overflow-y: auto;
-                  touch-action: none;
-                  overscroll-behavior: contain;
-                ">
-                  <div id="entropy-box" style="width: 450px;max-width: 95vw;background: linear-gradient( 0deg, #2e344e 0%, #1c1f2b 50%, #111118 100% );backdrop-filter: blur(20px);-webkit-backdrop-filter: blur(20px);border-radius: 16px;border: 1px solid rgba(255, 255, 255, 0.16);box-shadow: 0 12px 40px rgba(0,0,0,0.35);padding: 24px;text-align: center;margin-top: 20px;">
+                <div id="entropy-overlay" style="display: none;position: fixed;inset: 0;background: linear-gradient( 135deg, #2e344e58 0%, #1c1f2b58 50%, #241b2e58 100% );backdrop-filter: blur(8px);-webkit-backdrop-filter: blur(8px);z-index: 9999;justify-content: center;align-items: flex-start;padding-top: 100px;opacity: 0;transition: opacity 0.4s ease;overflow-y: auto;touch-action: none;overscroll-behavior: contain;">
+                  <div id="entropy-box" style="width: 450px;max-width: 95vw;background: linear-gradient( 0deg, #2e344e 0%, #1c1f2b 50%, #0f111c 100% );backdrop-filter: blur(20px);-webkit-backdrop-filter: blur(20px);border-radius: 16px;border: 1px solid rgba(255, 255, 255, 0.16);box-shadow: 0 12px 40px rgba(0,0,0,0.35);padding: 24px;text-align: center;margin-top: 20px;">
                     <h3 style="margin: 0 0 12px; font-size: 1.35em; color: #fff;">Add Randomness</h3>
                     <p style="color: #fff; font-size: 14px; line-height: 1.4; margin-bottom: 16px;">
                       Move your finger (or mouse) around in the box to generate SHA-256 randomness.
                     </p>
-                    <canvas id="entropy-canvas" width="400" height="300" style="cursor: crosshair;touch-action: none;-webkit-user-select: none;user-select: none;background: linear-gradient( 180deg, #2e344e 0%, #1c1f2b 50%, #111118 100% );backdrop-filter: blur(20px);-webkit-backdrop-filter: blur(20px);border: 1px solid rgba(255, 255, 255, 0.16);border-radius: 12px;box-shadow: inset 2px 2px 88px rgba(0,0,0,0.6);width: 100%;height: auto;aspect-ratio: 4 / 3;max-height: 55vh;"></canvas>
+                    <canvas id="entropy-canvas" width="600" height="350" style="cursor: crosshair;touch-action: none;-webkit-user-select: none;user-select: none;background: linear-gradient( 180deg, #2e344e 0%, #1c1f2b 50%, #111118 100% );backdrop-filter: blur(20px);-webkit-backdrop-filter: blur(20px);border: 1px solid rgba(255, 255, 255, 0.16);border-radius: 12px;box-shadow: inset 2px 2px 88px rgba(0,0,0,0.6);width: 100%;height: auto;aspect-ratio: 4 / 3;max-height: 55vh;"></canvas>
                     <div style="margin-top: 16px;">
                       <div style="height: 10px; background: #2a3b55; border-radius: 5px; overflow: hidden;">
                         <div id="entropy-progress-bar" style="
@@ -438,18 +419,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
        
    
        <footer class="footer-top">
-   
+    
           <div class="footer-container">
       <div class="footer-brand">
-        <h3>Luck.fyi</h3>
+        <h3 class="lucky1">www.Luck.fyi</h3>
         <p style="text-align: left;">Smart random generators for global lotteries & crypto seeds — fair, transparent, and truly random.</p>
       </div>
+
       <div class="footer-links">
+
         <!-- Popular Links -->
         <div class="footer-column">
           <h4>Popular Links</h4>
           <ul>
-            <li><a class="links" href="index.html">Home</a></li>
+            <li><a class="links" href="https://luck.fyi/">Home</a></li>
             <li><a class="links" href="lottery-number-generator-global.html">All Generators</a></li>
             <li><a class="links" href="lottery-winning-odds-world-biggest.html">Global Lotteries</a></li>
             <li><a class="links" href="powerball.html">Powerball</a></li>
@@ -459,7 +442,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <li><a class="links" href="seed-phrase-generator.html">Crypto Seed Phrase Generators</a></li>
           </ul>
         </div>
-         
+          
           <!-- Generators -->
         <div class="footer-column">
           <h4>Generators</h4>
@@ -473,12 +456,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <li><a class="links" href="lottery-number-generator-global.html">All Generators →</a></li>
           </ul>
         </div>
+
         <!-- Tools -->
         <div class="footer-column">
           <h4>Tools</h4>
           <ul>
-          <li><a class="links" href="lotto-results.html" class="tooltip-trigger"
-       aria-label="Lotto results"
+          <li><a class="links" href="lotto-results.html" class="tooltip-trigger" 
+       aria-label="Lotto results" 
        data-tooltip="Coming Soon">Lotto results →</a></li>
             <li><a class="links" href="lottery-number-generator-global.html">Random Number Generators</a></li>
             <li><a class="links" href="lottery-winning-odds-world-biggest.html">Winning Odds</a></li>
@@ -486,24 +470,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <li><a class="links" href="seed-phrase-generator.html">Crypto Seed Phrase Generators</a></li>
           </ul>
         </div>
+          
+            <!-- VIP -->
+        <div class="footer-column">
+          <h4>VIP<span aria-hidden="true" style="filter: brightness(107%) contrast(120%) hue-rotate(258deg) saturate(300%); font-size: 12px;">💎</span></h4>
+          <ul>
+            <li><a class="links">Membership Dashboard</a></li>
+              <li><a class="links">Ai Generators</a></li>
+            <li><a class="links">Luck Points</a></li>
+            <li><a class="links">World Ranking Page</a></li>
+            <li><a class="links">Redemptions Page</a></li>
+            <li><a class="links">My Profile</a></li>
+          </ul>
+        </div>
+          
       </div>
     </div>
-       
-  <div class="footer">
+        
+
+  <div class="footer" id="contact">
             <div>
                 <span
                     >© <span id="yr"></span> Luck.fyi</span
                 >
             </div>
             <div class="footerLinks">
-                <a href="https://x.com/luckfyi">x.com</a>
-                <a href="https://instagram.com/luckfyi">instagram</a>
-                <a href="https://youtube.com/@luckfyi">youtube</a>
-                <a href="shop.html">shop</a>
+                <a href="mailto:business@luck.fyi">Email</a>
+                <a href="https://x.com/luckfyi">X.com</a>
+                <a href="shop.html">Shop</a>
+                <a href="https://instagram.com/luckfyi">Instagram</a>
+                <a href="https://youtube.com/@luckfyi">YouTube</a>
             </div>
             </div>
-          </footer>
-</div></div>
+          </footer></div>
     <div data-aos="zoom-in" data-aos-once="true" style="height: 1px;"></div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/aos.min.js"></script>
