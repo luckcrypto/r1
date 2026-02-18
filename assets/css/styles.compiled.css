@@ -278,6 +278,7 @@ code {
 
 .lucky1 {
   display: flex !important;
+  justify-content: center;
   background: linear-gradient(90deg, #00f0ff, #ff00ea, #ffd700, #ffff00);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
