@@ -228,13 +228,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div style="border-radius: 15px;" class="d-flex justify-content-center">
    
                 <!-- Entropy collection overlay – TOUCH/MOBILE SUPPORT ADDED -->
-                <div id="entropy-overlay" style="display: none;position: fixed;inset: 0;background: linear-gradient( 135deg, #2e344e58 0%, #1c1f2b58 50%, #241b2e58 100% );backdrop-filter: blur(8px);-webkit-backdrop-filter: blur(8px);z-index: 9999;justify-content: center;align-items: flex-start;padding-top: 100px;opacity: 0;transition: opacity 0.4s ease;overflow-y: auto;touch-action: none;overscroll-behavior: contain;">
+                <div id="entropy-overlay" style="display: none;position: fixed;inset: 0;background: linear-gradient( 135deg, #2e344e58 0%, #1c1f2b58 50%, #241b2e58 100% );backdrop-filter: blur(8px);-webkit-backdrop-filter: blur(8px);z-index: 9999;justify-content: center;align-items: flex-start;padding-top: 60px;opacity: 0;transition: opacity 0.4s ease;overflow-y: auto;touch-action: none;overscroll-behavior: contain;">
                   <div id="entropy-box" style="width: 450px;max-width: 95vw;background: linear-gradient( 0deg, #2e344e 0%, #1c1f2b 50%, #0f111c 100% );backdrop-filter: blur(20px);-webkit-backdrop-filter: blur(20px);border-radius: 16px;border: 1px solid rgba(255, 255, 255, 0.16);box-shadow: 0 12px 40px rgba(0,0,0,0.35);padding: 24px;text-align: center;margin-top: 20px;">
                     <h3 style="margin: 0 0 12px; font-size: 1.35em; color: #fff;">Add Randomness</h3>
                     <p style="color: #fff; font-size: 14px; line-height: 1.4; margin-bottom: 16px;">
                       Move your finger (or mouse) around in the box to generate SHA-256 randomness.
                     </p>
-                    <canvas id="entropy-canvas" width="600" height="350" style="cursor: crosshair;touch-action: none;-webkit-user-select: none;user-select: none;background: linear-gradient( 180deg, #2e344e 0%, #1c1f2b 50%, #111118 100% );backdrop-filter: blur(20px);-webkit-backdrop-filter: blur(20px);border: 1px solid rgba(255, 255, 255, 0.16);border-radius: 12px;box-shadow: inset 2px 2px 88px rgba(0,0,0,0.6);width: 100%;height: auto;aspect-ratio: 4 / 3;max-height: 55vh;"></canvas>
+                    <canvas id="entropy-canvas" style="cursor: crosshair;touch-action: none;-webkit-user-select: none;user-select: none;background: linear-gradient( 180deg, #2e344e 0%, #1c1f2b 50%, #111118 100% );backdrop-filter: blur(20px);-webkit-backdrop-filter: blur(20px);border: 1px solid rgba(255, 255, 255, 0.16);border-radius: 12px;box-shadow: inset 2px 2px 88px rgba(0,0,0,0.6);width: 100%;aspect-ratio: 3 / 2;padding-right: 0px;"></canvas>
                     <div style="margin-top: 16px;">
                       <div style="height: 10px; background: #2a3b55; border-radius: 5px; overflow: hidden;">
                         <div id="entropy-progress-bar" style="
@@ -324,9 +324,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             <div style="margin-top: 80px;">
    
-                <h1 style="padding-left: 4px; padding-right: 4px;">National Lottery UK Random Number Generator <span aria-hidden="true">🇬🇧</span> – Free Lotto Picks 2026</h1>
-                <h2 style="padding-left: 4px; padding-right: 4px;">Generate Your UK Lotto Numbers Instantly</h2>
-                <p class="info">Create your perfect National Lottery UK ticket instantly with our free random number generator. It automatically selects 6 main numbers from 1 to 59 and 1 Bonus Ball – exactly following official Lotto rules. No sign-up, no downloads, just fair and unbiased random picks every time. Whether you're playing for fun or chasing the multimillion-pound jackpot, our tool gives you quick, reliable combinations ready to use for the next Wednesday or Saturday draw.</p>
+                <h1 style="padding-left: 4px; padding-right: 4px;">National Lottery UK Random Number Generator <span aria-hidden="true">🇬🇧</span><br><br>SHA256 Edition</h1>
+                <h2 class="lucky1 d-flex justify-content-center" style="padding-left: 4px; padding-right: 4px;">Generate Your UK Lotto Numbers Instantly with SHA-256 Cryptography – Real Entropy, Real Random.</h2>
+                <p class="info">Generate your perfect National Lottery UK Lotto ticket instantly with our free <strong>SHA-256 Entropy Random Number Generator</strong>.  
+  It securely picks <strong>6 main numbers</strong> from 1 to 59 — plus shows a simulated Bonus Ball for reference — following the official Lotto rules to the letter.  
+  No sign-up, no downloads, no reliance on external servers: you create strong, true randomness right on your device by moving your mouse or finger across the entropy canvas until 256 bits of high-quality entropy are collected. This is instantly hashed with <strong>SHA-256</strong> and used to seed a robust SFC32 PRNG — delivering fair, unpredictable, cryptographically strong combinations every time.  
+  Whether you're playing for fun, experimenting with patterns, or aiming for the next multimillion-pound Wednesday or Saturday jackpot, get quick, trustworthy numbers you can fully trust — generated locally, by you.</p>
                 <div class="container">
                     <div class="row">
    
@@ -337,6 +340,48 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
             </div>
         </section>
+        
+        <section class="hero ymyl" style ="padding-top: 88px; padding-bottom: 88px;">
+
+  <h3 style="color: #ffcc57;">
+    Important: Understanding Lottery Number Generators & Your Chances of Winning
+  </h3>
+
+  <p class="info">
+    Lottery number generators — including our standard and SHA-256 powered versions — exist only to create random or pattern-filtered combinations for you to play. They do <strong>not</strong> predict future draw results, analyze past winning numbers in a way that gives an edge, or use any secret algorithm to improve your odds.
+  </p>
+
+  <p class="info">
+    Every official lottery draw (Powerball, Mega Millions, EuroMillions, UK National Lottery, EuroJackpot, etc.) is independently random and regulated. Each possible combination has <strong>exactly the same probability</strong> of being drawn — no matter how the numbers were chosen.
+  </p>
+
+  <p class="info">
+    Using stronger randomness (our SHA-256 generators, where you provide mouse/finger entropy that is hashed into a cryptographic seed) makes your selected numbers <strong>less predictable by outside parties</strong> and more personal/unbiased compared to weak browser randomness. However, this added unpredictability has <strong>zero impact</strong> on the actual winning probability — which remains fixed by the mathematics of the game.
+  </p>
+
+  <p class="info">
+    Lotteries are games of pure chance.<br>
+    There is no strategy, tools (including ours), pattern, hot/cold numbers analysis, or randomness method that can increase your chances of winning.
+  </p>
+
+  <p class="info" style="text-align: center;">
+    Play responsibly — only spend what you can afford to lose. If gambling becomes a problem, seek help from:<br>
+  GamCare (UK) — www.gamcare.org.uk<br>
+  BeGambleAware — www.begambleaware.org<br>
+  or your local gambling helpline.
+  </p>
+
+  <!-- Added client-side security notice -->
+  <div style="margin-top: 28px; padding-top: 88px; border-top: 1px solid rgba(255,255,255,0.08); text-align: center;">
+    <h3 style="font-size: 16px; color: #50fa7b; margin-bottom: 5px;">Purely Client-Side & Secure</h3>
+    <p style="font-size: 14px; opacity: 0.7; max-width: 500px; margin: 0 auto; line-height: 1.6;">
+      This tool runs entirely in your browser — no data, chosen numbers, or entropy movements are ever sent to any server.<br>
+      Your privacy is protected by design.
+    </p>
+  </div>
+
+</section>
+        
     </main>
 
         <section style="display: none; padding-top: 160px; padding-left: 10px; padding-right: 10px; padding-bottom: 120px;" class="herofront" id="overview" data-section="overview">
