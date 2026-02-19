@@ -11,9 +11,6 @@
 }
 
 @media (max-width: 500px) {
-  #entropy-box {
-    padding: 16px 12px;
-  }
   #entropy-progress-text {
     font-size: 15px;
   }

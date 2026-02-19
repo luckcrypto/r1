@@ -90,6 +90,7 @@ button {
 }
 
 #numbers-12word {
+  list-style: none;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -258,6 +259,7 @@ button {
 }
 
 #numbers-24word {
+  list-style: none;
   padding: 20px;
   display: flex;
   flex-direction: column;
