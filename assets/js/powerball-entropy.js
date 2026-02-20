@@ -1,20 +1,16 @@
-// uk-lotto-generator.js
-// UK Lotto generator with improved SHA-256 entropy collection (incremental mixing)
+// Powerball generator with SHA-256 entropy collection (same as UK Lotto version)
 
 (function() {
     // ────────────────────────────────────────────────
     // DOM references
     // ────────────────────────────────────────────────
-    const dateHolder = document.querySelector(".date-today-uk-entropy");
-    const timeHolder = document.querySelector(".timestamp-uk-entropy");
-    const ticketBody = document.getElementById("numbers-uk-entropy");
-    const quickpick = document.getElementById("quick-pick-uk-entropy");
-    const resetButton = document.getElementById("reset-ticket-uk-entropy");
-    const patternSelect = document.getElementById("pattern-select-uk-entropy");
-    const toggleBtn = document.getElementById("toggle-pattern-btn");
-    const patternRow = document.getElementById("pattern-row");
+    const dateHolder = document.querySelector(".date-today-powerball-entropy");
+    const timeHolder = document.querySelector(".timestamp-powerball-entropy");
+    const ticketBody = document.getElementById("numbers-powerball-entropy");
+    const quickpick = document.getElementById("quick-pick-powerball-entropy");
+    const resetButton = document.getElementById("reset-ticket-powerball-entropy");
 
-    // Entropy modal elements
+    // Entropy modal elements (you need to add these to your HTML)
     const entropyOverlay = document.getElementById("entropy-overlay");
     const entropyCanvas = document.getElementById("entropy-canvas");
     const entropyProgressBar = document.getElementById("entropy-progress-bar");
@@ -24,52 +20,22 @@
 
     const MAX_LINES = 10;
     let lineCount = 0;
-    let patternFilterEnabled = false;
-
-    // Entropy state – improved incremental mixing
-    const ENTROPY_REQUIRED_EVENTS = 256;   // Realistic: ~2–5 bits per good movement
-    let entropyMixer = new Uint8Array(32);  // 256-bit mixing buffer
+    let collectingEntropy = false;
+    let entropyMixer = new Uint8Array(32);
     let eventCount = 0;
     let lastTime = 0;
-    let collectingEntropy = false;
     let trailPositions = [];
     let rng = null;
 
-    // ────────────────────────────────────────────────
-    // Initial setup
-    // ────────────────────────────────────────────────
-    if (patternRow) patternRow.hidden = true;
-    if (patternSelect) {
-        patternSelect.disabled = true;
-        patternSelect.value = "random";
-    }
-    if (toggleBtn) {
-        toggleBtn.innerHTML = `Advanced settings:‎ ‎ ‎ <strong>Disabled</strong>`;
-        toggleBtn.classList.remove("on");
-    }
+    const ENTROPY_REQUIRED_EVENTS = 256;
 
     // ────────────────────────────────────────────────
     // Event listeners
     // ────────────────────────────────────────────────
     if (quickpick) quickpick.addEventListener("click", handleQuickPick);
     if (resetButton) resetButton.addEventListener("click", resetTicket);
-    if (toggleBtn) {
-        toggleBtn.addEventListener("click", () => {
-            patternFilterEnabled = !patternFilterEnabled;
-            toggleBtn.innerHTML = `Advanced settings:‎ ‎ ‎ <strong>${patternFilterEnabled ? "Enabled" : "Disabled"}</strong>`;
-            toggleBtn.classList.toggle("on", patternFilterEnabled);
-            if (patternFilterEnabled) {
-                patternRow.hidden = false;
-                patternSelect.disabled = false;
-            } else {
-                patternRow.hidden = true;
-                patternSelect.disabled = true;
-                patternSelect.value = "random";
-            }
-        });
-    }
 
-    // Entropy canvas – mouse + touch support
+    // Entropy canvas events
     if (entropyCanvas) {
         entropyCanvas.addEventListener("mousemove", collectEntropyEvent);
         entropyCanvas.addEventListener("touchmove", collectEntropyEvent, { passive: false });
@@ -79,7 +45,7 @@
     if (entropyCancel) entropyCancel.addEventListener("click", cancelEntropyCollection);
 
     // ────────────────────────────────────────────────
-    // Entropy collection logic (improved)
+    // Entropy logic
     // ────────────────────────────────────────────────
     function handleQuickPick() {
         if (!rng) {
@@ -108,8 +74,7 @@
 
     function collectEntropyEvent(e) {
         if (!collectingEntropy) return;
-
-        e.preventDefault?.(); // prevent scrolling on touch
+        e.preventDefault?.();
 
         const rect = entropyCanvas.getBoundingClientRect();
         const touch = e.touches?.[0] ?? e;
@@ -118,19 +83,14 @@
         const now = performance.now();
         const deltaTime = now - lastTime;
 
-        // Quantized inputs for better bit distribution
         const qx  = Math.floor(x * 4)   >>> 0;
         const qy  = Math.floor(y * 4)   >>> 0;
         const qdt = Math.floor(deltaTime * 8) >>> 0;
 
-        // Mix into 256-bit buffer using XOR + rotate
         for (let i = 0; i < 32; i += 4) {
-            let v = (entropyMixer[i]     << 24
-                   | entropyMixer[i+1]   << 16
-                   | entropyMixer[i+2]   <<  8
-                   | entropyMixer[i+3]) >>> 0;
+            let v = (entropyMixer[i]   << 24 | entropyMixer[i+1] << 16 |
+                     entropyMixer[i+2] <<  8 | entropyMixer[i+3]) >>> 0;
 
-            // XOR event data + position-dependent rotate
             v ^= qx ^ (qy << 16) ^ (qdt * (i + 1));
             const rot = ((qx + qy + i) % 31) + 1;
             v = (v << rot) | (v >>> (32 - rot));
@@ -143,7 +103,6 @@
 
         lastTime = now;
         eventCount++;
-
         trailPositions.push({x, y});
         if (trailPositions.length > 1024) trailPositions.shift();
 
@@ -164,7 +123,6 @@
         if (entropyOverlay) entropyOverlay.style.opacity = "0";
         setTimeout(() => { if (entropyOverlay) entropyOverlay.style.display = "none"; }, 400);
 
-        // Final hash of mixed entropy + context
         const encoder = new TextEncoder();
         const context = encoder.encode(
             `canvas:${entropyCanvas.width}x${entropyCanvas.height};` +
@@ -178,14 +136,10 @@
 
         const hashBuffer = await crypto.subtle.digest('SHA-256', finalInput);
         const hashArray = new Uint32Array(hashBuffer);
+        rng = sfc32(hashArray[0], hashArray[1], hashArray[2], hashArray[3]);
 
-        const seed = [hashArray[0], hashArray[1], hashArray[2], hashArray[3]];
-        rng = sfc32(...seed);
+        console.log(`Powerball entropy collected: ${eventCount} events → seed created`);
 
-        // Optional console feedback
-        console.log(`Entropy collected: ${eventCount} events → 256-bit seed created`);
-
-        // Clean up
         entropyMixer.fill(0);
         trailPositions = [];
 
@@ -199,21 +153,31 @@
         entropyMixer.fill(0);
         trailPositions = [];
         eventCount = 0;
+        // Auto-seed with secure RNG if cancelled
+        autoSeed();
+        addOneLine();
+    }
+
+    function autoSeed() {
+        if (!rng) {
+            const seed = new Uint32Array(4);
+            crypto.getRandomValues(seed);
+            rng = sfc32(seed[0], seed[1], seed[2], seed[3]);
+            console.log("Powerball auto-seeded with crypto.getRandomValues");
+        }
     }
 
     function updateEntropyProgress() {
         const count = Math.min(eventCount, ENTROPY_REQUIRED_EVENTS);
         const percent = (count / ENTROPY_REQUIRED_EVENTS) * 100;
         if (entropyProgressBar) entropyProgressBar.style.width = percent + "%";
-        if (entropyProgressText) entropyProgressText.textContent = 
-            `${count} / ${ENTROPY_REQUIRED_EVENTS} movements`;
+        if (entropyProgressText) entropyProgressText.textContent = `${count} / ${ENTROPY_REQUIRED_EVENTS} movements`;
     }
 
     function drawTrail() {
         const ctx = entropyCanvas.getContext("2d");
         if (!ctx) return;
         ctx.clearRect(0, 0, entropyCanvas.width, entropyCanvas.height);
-
         for (let i = 0; i < trailPositions.length; i++) {
             const ratio = (i + 1) / trailPositions.length;
             ctx.beginPath();
@@ -221,12 +185,11 @@
             ctx.fillStyle = `rgba(41,239,143, ${ratio * 0.8})`;
             ctx.fill();
         }
-
         if (collectingEntropy) requestAnimationFrame(drawTrail);
     }
 
     // ────────────────────────────────────────────────
-    // Core generation logic
+    // Ticket generation
     // ────────────────────────────────────────────────
     function addOneLine() {
         if (lineCount >= MAX_LINES) {
@@ -239,23 +202,21 @@
             timeHolder.textContent = getTimestamp();
         }
 
-        let pattern = "random";
-        if (patternFilterEnabled && !patternRow.hidden) {
-            pattern = patternSelect.value;
-        }
+        // Auto-seed if still no RNG (safety net)
+        if (!rng) autoSeed();
 
-        const pick = generatePickWithPattern(pattern);
+        const pick = generatePick();
 
         const line = document.createElement("ul");
+
         pick.forEach((value, index) => {
             const number = document.createElement("li");
-            number.className = `num${index + 1} number`;
-            const bgColor = getBallColor(value);
-            number.style.backgroundColor = bgColor;
-            number.style.color = (bgColor === '#ffffff' || bgColor === '#FFFF00') ? '#111111' : '#000000';
-            number.style.textShadow = '0 1px 1px rgba(0,0,0,0.1)';
-            number.style.boxShadow = 'inset 0 2px 6px rgba(0,0,0,0.35), 0 2px 8px rgba(0,0,0,0.4)';
-            number.style.border = '1px solid rgba(0,0,0,0.25)';
+            if (index < 5) {
+                number.className = `num${index + 1}`;
+            } else {
+                number.className = "PB PB1";
+            }
+            number.className += " number";
             number.textContent = value < 10 ? `0${value}` : value;
             line.appendChild(number);
         });
@@ -263,10 +224,10 @@
         // Copy button
         const copyBtn = document.createElement("li");
         copyBtn.className = "copy-btn";
-        copyBtn.textContent = "copy";
-        copyBtn.title = "Copy this line";
+        copyBtn.textContent = "📋";
+        copyBtn.title = "Copy this line (white balls | Powerball)";
         copyBtn.style.cursor = "pointer";
-        copyBtn.style.fontSize = "10px";
+        copyBtn.style.fontSize = "1.3em";
         copyBtn.style.marginLeft = "10px";
         copyBtn.style.padding = "4px 8px";
         copyBtn.style.borderRadius = "6px";
@@ -276,7 +237,9 @@
         copyBtn.addEventListener("click", () => {
             const numbers = Array.from(line.querySelectorAll(".number"))
                                  .map(el => el.textContent.trim());
-            const textToCopy = numbers.join(" ");
+            const whiteBalls = numbers.slice(0, 5).join(" ");
+            const powerball = numbers[5];
+            const textToCopy = `${whiteBalls} | ${powerball}`;
             navigator.clipboard.writeText(textToCopy)
                 .then(() => {
                     const original = copyBtn.textContent;
@@ -311,64 +274,29 @@
     // ────────────────────────────────────────────────
     // Number generation
     // ────────────────────────────────────────────────
-    function generatePickWithPattern(pattern) {
-        const odds = [], evens = [];
-        for (let i = 1; i <= 59; i++) {
-            (i % 2 === 0 ? evens : odds).push(i);
-        }
-
-        let targetOddCount;
-        switch (pattern) {
-            case "random": return generateRandomPick();
-            case "1o5e": targetOddCount = 1; break;
-            case "2o4e": targetOddCount = 2; break;
-            case "3o3e": targetOddCount = 3; break;
-            case "4o2e": targetOddCount = 4; break;
-            case "5o1e": targetOddCount = 5; break;
-            case "6o":   targetOddCount = 6; break;
-            case "0o":   targetOddCount = 0; break;
-            default:     return generateRandomPick();
-        }
-
-        const selected = [];
-        let remainingOdd = targetOddCount;
-
-        while (remainingOdd > 0 && odds.length > 0) {
-            const idx = Math.floor(myRandom() * odds.length);
-            selected.push(odds.splice(idx, 1)[0]);
-            remainingOdd--;
-        }
-
-        let remainingEven = 6 - selected.length;
-        while (remainingEven > 0 && evens.length > 0) {
-            const idx = Math.floor(myRandom() * evens.length);
-            selected.push(evens.splice(idx, 1)[0]);
-            remainingEven--;
-        }
-
-        if (selected.length < 6) {
-            console.warn("Pattern generation incomplete → falling back to random");
-            return generateRandomPick();
-        }
-
-        selected.sort((a, b) => a - b);
-        return selected;
-    }
-
-    function generateRandomPick() {
+    function generatePick() {
         const pick = [];
-        while (pick.length < 6) {
-            const value = randomNumber(59, 1);
+        // 5 unique white balls 1–69
+        while (pick.length < 5) {
+            const value = randomNumber(69, 1);
             if (!pick.includes(value)) pick.push(value);
         }
         pick.sort((a, b) => a - b);
+
+        // Powerball 1–26
+        const pb = randomNumber(26, 1);
+        pick.push(pb);
+
         return pick;
+    }
+
+    function randomNumber(max, min = 1) {
+        return Math.floor(myRandom() * (max - min + 1)) + min;
     }
 
     function myRandom() {
         if (!rng) {
-            console.warn("No entropy seed → using fallback Math.random()");
-            return Math.random();
+            autoSeed();
         }
         return rng();
     }
@@ -388,16 +316,6 @@
     // ────────────────────────────────────────────────
     // Helpers
     // ────────────────────────────────────────────────
-    function getBallColor(number) {
-        const n = Number(number);
-        if (n <= 10) return '#ffffff';
-        if (n <= 20) return '#87CEEB';
-        if (n <= 30) return '#FFB6C1';
-        if (n <= 40) return '#7CFC00';
-        if (n <= 50) return '#FFFF00';
-        return '#c985ff';
-    }
-
     function getDate() {
         const today = new Date();
         const month = today.getMonth() + 1;
@@ -412,9 +330,5 @@
         const m = now.getMinutes().toString().padStart(2, "0");
         const s = now.getSeconds().toString().padStart(2, "0");
         return `${h}:${m}:${s}`;
-    }
-
-    function randomNumber(max, min = 1) {
-        return Math.floor(myRandom() * (max - min + 1)) + min;
     }
 })();
