@@ -1,0 +1,242 @@
+@charset "UTF-8";
+#entropy-overlay,
+#entropy-canvas {
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+
+#entropy-canvas {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (max-width: 500px) {
+  #entropy-progress-text {
+    font-size: 15px;
+  }
+}
+.toggle-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  height: 28px !important;
+  width: auto;
+  padding: 14px 18px 14px 18px;
+  margin-bottom: 0px;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(1, 1, 8, 0.08) 50%);
+  text-transform: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn.on {
+  background: linear-gradient(135deg, rgba(111, 255, 111, 0.28) 0%, rgba(1, 1, 8, 0.08) 50%);
+  color: rgb(44, 208, 126);
+  border: 1px solid rgba(111, 255, 111, 0.88);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0);
+  transition: all 0.3s ease;
+}
+
+.toggle-btn.on:hover,
+.toggle-btn.on:active {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0);
+  transition: all 0.3s ease;
+}
+
+.toggle-btn:hover,
+.toggle-btn:active {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+  background: linear-gradient(135deg, rgba(111, 255, 111, 0.28) 0%, rgba(1, 1, 8, 0.08) 50%);
+  transition: all 0.3s ease;
+}
+
+/* Visual feedback when label is hidden */
+#pattern-select-powerball-entropy:disabled,
+#pattern-label.hidden {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.generate-powerball-entropy {
+  box-sizing: border-box;
+  padding: 20px;
+  width: 550px;
+  max-width: 95vw;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(15, 17, 28, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: lottoFloat 8s ease-in-out infinite 1s;
+  transition: all var(--transition-normal);
+}
+
+header.generate-powerball-entropy {
+  width: 100%;
+  padding: 0 0 20px;
+  border-bottom: 1px dashed black;
+}
+
+header.generate-powerball-entropy > ul,
+header.generate-powerball-entropy > div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+header.generate-powerball-entropy > ul li {
+  display: block;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-size: 1.5em;
+  font-weight: 900;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+}
+
+header.generate-powerball-entropy > ul li:last-child {
+  font-size: 1.5em;
+  line-height: 8;
+  padding: 0;
+  width: 45px;
+  height: 45px;
+  font-weight: bolder;
+  background: black;
+  color: white;
+}
+
+header.generate-powerball-entropy > ul li:last-child:after {
+  content: "®";
+  position: absolute;
+  display: block;
+  color: black;
+  right: -5px;
+  bottom: -14px;
+  font-size: 1.5em;
+}
+
+header.generate-powerball-entropy > div {
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+
+footer.generate-powerball-entropy {
+  font-size: 1.5em;
+  padding-top: 20px;
+  border-top: 1px dashed black;
+}
+
+.timestamp-powerball-entropy {
+  margin-left: 20px;
+}
+
+button {
+  display: flex;
+  margin-top: 20px;
+  width: 200px;
+  height: 40px;
+  font-size: 1.5em;
+  background: pink;
+  color: white;
+  text-transform: uppercase;
+}
+
+#numbers-powerball-entropy {
+  padding: 20px;
+  margin: 8px 0px 8px 0px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+#numbers-powerball-entropy ul {
+  display: flex;
+  width: auto;
+  padding-bottom: 4px;
+  margin-bottom: 5px;
+}
+
+#numbers-powerball-entropy ul:last-child {
+  margin-bottom: 0;
+}
+
+#numbers-powerball-entropy ul li {
+  margin-bottom: 8px;
+  font-size: 18px;
+  display: block;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  margin-left: 4px;
+  margin-right: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: scaleballs 0.5s ease-in-out;
+}
+
+@keyframes scaleballs {
+  from {
+    transform: scale(0) translateY(-20px);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1) translateY(0px);
+    opacity: 1;
+  }
+}
+#numbers-powerball-entropy {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+#numbers-powerball-entropy ul {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+#numbers-powerball-entropy ul:last-child {
+  margin-bottom: 0;
+}
+
+#numbers-powerball-entropy ul li {
+  margin-bottom: 8px;
+  display: block;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#numbers-powerball-entropy .number {
+  border-radius: 100%;
+  font-weight: bolder;
+  color: black;
+  background: linear-gradient(135deg, rgba(250, 250, 250, 0.9529411765), rgba(255, 255, 255, 0.9529411765));
+  box-shadow: inset 0 0 8px rgba(17, 17, 17, 0.5843137255);
+  height: 40px;
+  width: 40px;
+}
+
+#numbers-powerball-entropy .PB {
+  border-radius: 100%;
+  color: white;
+  height: 40px;
+  width: 40px;
+  background: linear-gradient(135deg, rgba(193, 16, 79, 0.9529411765), rgba(94, 24, 49, 0.9529411765));
+  box-shadow: 0 0 20px rgba(17, 17, 17, 0.5843137255);
+}
