@@ -123,7 +123,7 @@ code {
 
 .topbar {
   top: 0;
-  height: 95px;
+  height: 78px;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -218,12 +218,12 @@ code {
 }
 
 .iconBtn {
-  width: 54px;
-  height: 54px;
+  width: 42px;
+  height: 42px;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(255, 255, 255, 0.08);
-  font-size: 22px;
+  font-size: 18px;
   color: rgba(222, 222, 255, 0.95);
   cursor: pointer;
   display: grid;
@@ -1102,7 +1102,6 @@ code {
   width: 408px;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(55, 57, 68, 0.3);
   background: linear-gradient(135deg, rgba(55, 57, 68, 0.3) 0%, rgba(55, 57, 88, 0.3) 100%);
   backdrop-filter: blur(21px);
   -webkit-backdrop-filter: blur(21px);
@@ -2143,14 +2142,16 @@ details p {
   }
   .nav-link1 {
     display: flex;
-    width: 65px;
-    height: 64px;
+    width: 58px;
+    min-width: 58px;
+    height: 58px;
+    max-height: 58px;
     justify-content: center;
     align-items: center;
     color: #fff;
     text-shadow: 1px 2px 8px rgba(11, 11, 18, 0.78);
     border-radius: 33%;
-    margin: 0 10px;
+    margin: 0px 6px 0px 6px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 68%);
     flex-direction: column;
     text-decoration: none;
@@ -2471,7 +2472,7 @@ p.text-1 {
 
 .footer-column h4 {
   color: #ffffff;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   margin: 0 0 14px;
   text-transform: uppercase;
@@ -2491,7 +2492,7 @@ p.text-1 {
 .footer-column a {
   color: #a0a0c0;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 10px;
   line-height: 1.4;
   transition: color 0.15s;
 }
