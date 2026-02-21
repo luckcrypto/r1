@@ -13,7 +13,6 @@ button {
 }
 
 body {
-  background-color: var(--bg);
   color: var(--fg);
   height: 50vh;
 }

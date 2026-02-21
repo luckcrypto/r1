@@ -41,6 +41,7 @@ html {
 body {
   height: 100%;
   scroll-behavior: smooth;
+  background-color: #191b26;
 }
 
 body {
@@ -131,7 +132,7 @@ code {
   gap: 16px;
   padding: 16px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  background: url("../../assets/img/nav-bg.png") left/cover no-repeat, linear-gradient(rgb(25, 27, 38), rgb(25, 27, 38) 50%, rgb(25, 27, 38));
+  background: url("../../assets/img/nav-bg.png") left/cover no-repeat, #191b26;
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   transition: all var(--transition-normal);
@@ -1100,6 +1101,8 @@ code {
   opacity: 1;
   position: absolute;
   width: 408px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: linear-gradient(135deg, rgba(55, 57, 68, 0.3) 0%, rgba(55, 57, 88, 0.3) 100%);
@@ -2027,6 +2030,9 @@ details p {
     margin-left: 4px;
     margin-right: 4px;
   }
+  .topbar {
+    background-color: #191b26;
+  }
   .chip.primary.top1.tools {
     display: none;
   }
@@ -2196,6 +2202,8 @@ details p {
     place-items: center;
   }
   .glassCard {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
     position: absolute;
     width: 84vw;
     border-radius: 22px;
