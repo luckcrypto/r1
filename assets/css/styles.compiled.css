@@ -131,7 +131,7 @@ code {
   gap: 16px;
   padding: 16px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  background: url("../../assets/img/nav-bg.png") left/cover no-repeat, linear-gradient(rgba(13, 6, 20, 0.95), rgba(13, 6, 20, 0.95) 50%, rgba(13, 6, 20, 0.95));
+  background: url("../../assets/img/nav-bg.png") left/cover no-repeat, linear-gradient(rgb(25, 27, 38), rgb(25, 27, 38) 50%, rgb(25, 27, 38));
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   transition: all var(--transition-normal);
@@ -2053,7 +2053,7 @@ details p {
     left: 50%;
     transform: translateX(-50%) translateY(20px);
     z-index: 9999 !important;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
   /* Show Tooltip on Hover/Tap */
 }
@@ -2152,30 +2152,34 @@ details p {
     text-shadow: 1px 2px 8px rgba(11, 11, 18, 0.78);
     border-radius: 33%;
     margin: 0px 6px 0px 6px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 68%);
+    padding: 4px;
     flex-direction: column;
     text-decoration: none;
     font-size: 11px;
     gap: 5px;
-    box-shadow: var(--shadow-lg);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1.48px solid rgba(255, 255, 255, 0.28);
+    box-shadow: none;
+    border: 0px solid rgba(255, 255, 255, 0.28);
     line-height: 1;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
     cursor: pointer !important;
   }
-  .mobile-nav1.visible .nav-link1:hover,
-  .mobile-nav1.visible .nav-link1:active {
+  .mobile-nav1.visible {
+    padding: 2px;
+    background: none;
+    transition: all 0.3s ease-in-out;
+  }
+  .mobile-nav1.visible .nav-link1:hover {
     transform: scale(1.18) translateY(0px);
     border-color: color-mix(in srgb, var(--accent2) 65%, rgba(255, 255, 255, 0.16));
-    background: linear-gradient(135deg, color-mix(in srgb, var(--accent1) 35%, rgba(11, 11, 15, 0.5)), color-mix(in srgb, var(--accent2) 25%, rgba(255, 255, 255, 0.08))) !important;
+    margin: 0px 6px 0px 6px;
+    padding: 2px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent1) 35%, rgba(11, 11, 15, 0.5)), color-mix(in srgb, var(--accent2) 25%, rgba(255, 255, 255, 0.08)));
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5), 0 25px 70px var(--accentGlow);
     -webkit-tap-highlight-color: transparent;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease-in-out;
   }
   .herofront {
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1) 38%, rgba(21, 8, 38, 0.15) 50%, rgba(21, 8, 38, 0.5) 55%, rgb(88, 38, 108)), url("../../assets/img/bg-mob.png") top/cover no-repeat;
