@@ -124,6 +124,7 @@ code {
 
 .topbar {
   top: 0;
+  width: 100vw;
   height: 78px;
   z-index: 1000;
   display: flex;
@@ -662,7 +663,7 @@ code {
 }
 
 .herofront {
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1) 38%, rgba(21, 8, 38, 0.15) 58%, rgba(21, 8, 38, 0) 78%, rgba(88, 38, 108, 0)), url("../../assets/img/luck-fyi-bg-main.png") right/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1) 38%, rgba(21, 8, 38, 0.15) 58%, rgba(21, 8, 38, 0) 78%, rgba(88, 38, 108, 0)), url("../../assets/img/luck-fyi-bg-main.png") center/cover no-repeat;
   padding: 10px 0px 10px;
   position: relative;
   overflow: hidden;
@@ -2250,7 +2251,7 @@ details p {
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    padding: 8px 0;
+    padding: 0px 0;
   }
   .nav {
     display: flex;
@@ -2484,7 +2485,7 @@ p.text-1 {
 
 .footer-column h4 {
   color: #ffffff;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: bold;
   margin: 0 0 14px;
   text-transform: uppercase;
@@ -2504,7 +2505,7 @@ p.text-1 {
 .footer-column a {
   color: #a0a0c0;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.4;
   transition: color 0.15s;
 }
