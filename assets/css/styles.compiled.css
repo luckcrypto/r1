@@ -65,7 +65,7 @@ a {
   justify-content: center;
   text-decoration: none;
   align-text: center;
-  transition: color var(--transition-fast);
+  transition: all 0.3s ease-in-out;
 }
 
 a.lines {
@@ -773,7 +773,7 @@ code {
   margin-bottom: 34px;
   text-align: justify;
   max-width: 250ch;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .ymyl h1 {
@@ -840,7 +840,7 @@ code {
   margin-bottom: 16px;
   text-align: justify;
   max-width: 250ch;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .ctaRow {
@@ -2173,13 +2173,11 @@ details p {
   .mobile-nav1.visible {
     padding: 2px;
     background: none;
-    transition: all 0.3s ease-in-out;
+    border: 1.48px solid rgba(255, 255, 255, 0.28);
   }
   .mobile-nav1.visible .nav-link1:hover {
     transform: scale(1.18) translateY(0px);
-    border-color: color-mix(in srgb, var(--accent2) 65%, rgba(255, 255, 255, 0.16));
-    margin: 0px 6px 0px 6px;
-    padding: 2px;
+    border: 1.48px solid rgba(255, 255, 255, 0.28);
     background: linear-gradient(135deg, color-mix(in srgb, var(--accent1) 35%, rgba(11, 11, 15, 0.5)), color-mix(in srgb, var(--accent2) 25%, rgba(255, 255, 255, 0.08)));
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
