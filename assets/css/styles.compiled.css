@@ -132,7 +132,7 @@ code {
   gap: 16px;
   padding: 16px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  background: url("../../assets/img/nav-bg.png") left/cover no-repeat, #191b26;
+  background: url("../../assets/img/nav-bg.png") left/cover no-repeat, rgb(22, 20, 36);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
   transition: all var(--transition-normal);
@@ -152,7 +152,7 @@ code {
 
 .topbar.scrolled {
   padding: 12px 20px;
-  background: rgba(10, 12, 23, 0.95);
+  background: rgb(22, 20, 36);
   backdrop-filter: blur(25px) saturate(200%);
   -webkit-backdrop-filter: blur(25px) saturate(200%);
 }
@@ -2031,7 +2031,7 @@ details p {
     margin-right: 4px;
   }
   .topbar {
-    background-color: #191b26;
+    background-color: rgb(22, 20, 36);
   }
   .chip.primary.top1.tools {
     display: none;
